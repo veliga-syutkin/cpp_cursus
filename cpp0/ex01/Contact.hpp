@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:46:20 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/03/28 19:00:28 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/03/28 21:28:14 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 # define CONTACT_HPP
 # include <iostream>
 # include <cstring>
-
-# define CONTACT_LENGTH 11
+# include <iomanip>
 
 class Contact
 {
 	private:
-		char _first[CONTACT_LENGTH];
-		char _last[CONTACT_LENGTH];
-		char _nick[CONTACT_LENGTH];
-		char _secret[CONTACT_LENGTH];
-		uint32_t _phone;
+		std::string _first;
+		std::string _last;
+		std::string _nick;
+		std::string _secret;
+		uint32_t _phone; // Crappy software, I could use a string instead to store all the phone numbers or long phone numbers
+						// like `Fix: +33 6 12 34 56 78 Mobile: +33 1 23 45 67 89`
 
 	// Private method to set a char array with a limit
-		void setChar(char *dest, const char *str);
+		// void setChar(std::string dest, const char *str);
 
 	public:
 		// Constructor
@@ -35,11 +35,11 @@ class Contact
 		// Destructor
 		~Contact() {}
 		// Setters
-		void setFirst(const char *first);
-		void setLast(const char *last);
-		void setNick(const char *nick);
-		void setSecret(const char *secret);
-		void setPhone(const char *phone);
+		void setFirst(std::string f);
+		void setLast(std::string l);
+		void setNick(std::string n);
+		void setSecret(std::string s);
+		void setPhone(uint32_t p);
 		// Getters
 		void Display();
 		void DisplaySearch();
