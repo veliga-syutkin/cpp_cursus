@@ -2,3 +2,6 @@
 v1
 CPP fully started, I guess?... Finally!...
 
+v2
+Still learning
+
