@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:46:20 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/03/28 21:28:14 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/03/29 03:38:20 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <cstring>
 # include <iomanip>
 
+# define _phone_number long int
+
 class Contact
 {
 	private:
@@ -23,26 +25,26 @@ class Contact
 		std::string _last;
 		std::string _nick;
 		std::string _secret;
-		uint32_t _phone; // Crappy software, I could use a string instead to store all the phone numbers or long phone numbers
+		_phone_number _phone; // Crappy software, I could use a string instead to store all the phone numbers or long phone numbers
 						// like `Fix: +33 6 12 34 56 78 Mobile: +33 1 23 45 67 89`
 
-	// Private method to set a char array with a limit
-		// void setChar(std::string dest, const char *str);
-
-	public:
-		// Constructor
-		Contact() {}
-		// Destructor
-		~Contact() {}
-		// Setters
 		void setFirst(std::string f);
 		void setLast(std::string l);
 		void setNick(std::string n);
 		void setSecret(std::string s);
-		void setPhone(uint32_t p);
+		void setPhone(_phone_number p);
+		std::string cut(std::string str);
+
+	public:
+		// Constructor
+		Contact();
+		// Destructor
+		~Contact() {}
+		// Setters
+		void setContact(std::string f, std::string l, std::string n, _phone_number p, std::string s);
 		// Getters
 		void Display();
-		void DisplaySearch();
+		void DisplaySearch(int index);
 };
 
 #endif
