@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 00:04:22 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/01 00:43:06 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:53:49 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ void Account::makeDeposit( int deposit )
 	_totalAmount += deposit;
 	_nbDeposits++;
 	_totalNbDeposits++;
-	std::cout << ";amount:" << _amount << std::endl;
+	std::cout << ";amount:" << _amount 
+	<< ";nb_deposits:" << _nbDeposits
+	<< std::endl;
 }
 
 bool Account::makeWithdrawal( int withdrawal )
@@ -116,6 +118,8 @@ bool Account::makeWithdrawal( int withdrawal )
 	_totalAmount -= withdrawal;
 	_nbWithdrawals++;
 	_totalNbWithdrawals++;
-	std::cout << ";amount:" << _amount << std::endl;
+	std::cout << ";amount:" << _amount 
+	<< ";nb_withdrawals:" << _nbWithdrawals
+	<< std::endl;
 	return (0);
 }

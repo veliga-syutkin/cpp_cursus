@@ -5,3 +5,6 @@ CPP fully started, I guess?... Finally!...
 v2
 Still learning
 
+v3
+Corrected ex02
+

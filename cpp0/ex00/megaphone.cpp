@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 16:40:14 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/03/28 17:30:48 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:47:16 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	for (int i = 1; i < argc; i++)
 	{
-		megaphone(argv[i]);
+		mockingCase(argv[i]);
 		std::cout << argv[i] << " ";
 	}
 	std::cout << std::endl;
