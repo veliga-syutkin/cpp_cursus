@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 21:05:06 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/03/31 23:50:57 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/02 20:28:32 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	Phonebook::pushIndex()
 	}
 };
 
-bool Phonebook::inputCheckerInt(std::string display, _phone_number &cell)
+bool Phonebook::inputCheckerInt(std::string display, _PHONE_NUMBER &cell)
 {
 	std::string num;
 	int i = 0;
@@ -57,11 +57,27 @@ void Phonebook::inputCheckerString(std::string display, std::string &str)
 {
 	std::cout << display;
 	std::getline(std::cin, str);
-	if (str.empty() && !std::cin.eof())
+	if (!std::cin.eof() && (str.empty() || !isprintable(str)))
 	{
 		std::cout << "Invalid input. Please enter a valid input: " << std::endl;
 		inputCheckerString(display, str);
 	}
+}
+
+// Check if the string is printable
+// Returns true if all characters are printable
+// Returns false if any character is not printable
+bool	Phonebook::isprintable(std::string str)
+{
+	int cursor = 0;
+
+	while (str[cursor])
+	{
+		if (!std::iswprint(str[cursor]) && !std::iswspace(str[cursor]))
+			return (false);
+		cursor++;	
+	}
+	return (true);
 }
 
 /* ************************************************************************** */
@@ -79,7 +95,7 @@ void Phonebook::addContact()
 	std::string nick;
 	inputCheckerString("Nickname : ", nick);
 
-	_phone_number phone = 0;
+	_PHONE_NUMBER phone = 0;
 	while (!inputCheckerInt("Enter phone number: ", phone))
 		;
 	
@@ -101,7 +117,7 @@ void	Phonebook::searchContact()
 		_contacts[i].DisplaySearch(i + 1);
 	std::cout << "Enter the index (1-8) of the contact you want to see: " << std::endl;
 	i = 0;
-	while (!i)
+	while (!i || i == 9)
 	{
 		std::getline(std::cin, input);
 		if (std::cin.eof())

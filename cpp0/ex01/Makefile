@@ -6,13 +6,16 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/28 16:31:36 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/03/31 23:52:56 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/02 20:33:04 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = Contact.cpp \
 	Phonebook.cpp \
 	main.cpp
+
+HEADERS =	Contact.hpp \
+			Phonebook.hpp
 
 NAME = phonebook
 
@@ -25,7 +28,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

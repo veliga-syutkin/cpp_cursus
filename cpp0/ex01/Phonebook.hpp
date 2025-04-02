@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:46:14 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/03/31 18:21:56 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/02 22:09:42 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ class Phonebook
 		Contact _contacts[8];
 		int _index;
 		void pushIndex();
-		bool inputCheckerInt(std::string display, _phone_number &cell);
+		bool inputCheckerInt(std::string display, _PHONE_NUMBER &cell);
 		void inputCheckerString(std::string display, std::string &str);
+		bool isprintable(std::string str);
 	public:
 		// Constructor
 		Phonebook();
 		// Destructor
 		~Phonebook(){};
-		// Setters
+
 		void addContact();
 		void searchContact();
 };

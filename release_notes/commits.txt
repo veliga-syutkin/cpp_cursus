@@ -8,3 +8,6 @@ Still learning
 v3
 Corrected ex02
 
+v4
+Resolved ex02. Solved index input 9. Solved unvalid char (including arrows) input.
+

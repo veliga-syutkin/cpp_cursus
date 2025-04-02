@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:20:12 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/03/29 04:22:21 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:58:43 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 // Constructor
 Contact::Contact()
 {
-	this->_first = "";
-	this->_last = "";
-	this->_nick = "";
-	this->_secret = "";
+	this->_first = " ";
+	this->_last = " ";
+	this->_nick = " ";
+	this->_secret = " ";
 	this->_phone = -1;
 };
 
@@ -46,15 +46,37 @@ void Contact::setSecret(std::string s)
 	this->_secret = s;
 };
 
-void Contact::setPhone(_phone_number p)
+void Contact::setPhone(_PHONE_NUMBER p)
 {
 	this->_phone = p;
 };
 
-std::string Contact::cut(std::string str){
-	if (str.length() > 10)
-		return str.substr(0, 9) + ".";
-	return (str);
+std::string Contact::cut(std::string str)
+{
+	int cursor = 0;
+	std::string s;
+
+	while (str[cursor] && cursor < _STRING_LIMIT_POS)
+	{
+		if (std::iswprint(str[cursor]))
+			s.push_back(str[cursor]);
+		else
+			s.push_back('?');
+		cursor++;
+	}
+	if (str.length() > _STRING_LIMIT)
+		s.push_back('.');
+	else if (str[cursor]) // if last char at cursor is not null
+		s.push_back(str[cursor]);
+	return (s);
+
+	// /* WORKING staff*/
+	// if (str.length() > _STRING_LIMIT)
+	// 	{
+	// 		str = str.substr(0, _STRING_LIMIT_POS);
+	// 		str += '.';
+	// 	}
+	// return (str);
 }
 
 /* ************************************************************************** */
@@ -73,13 +95,13 @@ void Contact::Display()
 void Contact::DisplaySearch(int index)
 {
 	std::cout 
-		<< std::right << std::setw(10) << index << "|"
-		<< std::right << std::setw(10) << this->cut(_first) << "|" 
-		<< std::right << std::setw(10) << this->cut(_last) << "|" 
+		<< std::right << std::setw(10) << index << '|'
+		<< std::right << std::setw(10) << this->cut(_first) << '|' 
+		<< std::right << std::setw(10) << this->cut(_last) << '|' 
 		<< std::right << std::setw(10) << this->cut(_nick) << std::endl;
 };
 
-void Contact::setContact(std::string f, std::string l, std::string n, _phone_number p, std::string s)
+void Contact::setContact(std::string f, std::string l, std::string n, _PHONE_NUMBER p, std::string s)
 {
 	setFirst(f);
 	setLast(l);

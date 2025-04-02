@@ -1,1 +1,1 @@
-Corrected ex02
+Resolved ex02. Solved index input 9. Solved unvalid char (including arrows) input.
