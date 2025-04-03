@@ -1,1 +1,1 @@
-cpp00-01 destructor fix
+cpp01-00 try-catch first baby steps

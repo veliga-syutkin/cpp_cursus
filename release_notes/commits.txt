@@ -17,3 +17,6 @@ cpp0!
 v6
 cpp00-01 destructor fix
 
+v7
+cpp01-00 try-catch first baby steps
+
