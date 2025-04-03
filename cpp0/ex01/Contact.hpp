@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:46:20 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/02 20:34:07 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:23:40 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class Contact
 		// Constructor
 		Contact();
 		// Destructor
-		~Contact() {}
+		~Contact();
 		// Setters
 		void setContact(std::string f, std::string l, std::string n, _PHONE_NUMBER p, std::string s);
 		// Getters

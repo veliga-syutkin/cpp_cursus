@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:46:14 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/02 22:09:42 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:23:11 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Phonebook
 		// Constructor
 		Phonebook();
 		// Destructor
-		~Phonebook(){};
+		~Phonebook();
 
 		void addContact();
 		void searchContact();

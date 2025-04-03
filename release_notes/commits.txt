@@ -14,3 +14,6 @@ Resolved ex02. Solved index input 9. Solved unvalid char (including arrows) inpu
 v5
 cpp0!
 
+v6
+cpp00-01 destructor fix
+

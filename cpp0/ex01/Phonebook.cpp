@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 21:05:06 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/02 20:28:32 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:25:30 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ Phonebook::Phonebook()
 	_index = 0;
 	for (int i = 0; i < 8; i++)
 		_contacts[i] = Contact();
+};
+
+// Destructor
+Phonebook::~Phonebook()
+{
+	// Destructor
 };
 
 /* ************************************************************************** */

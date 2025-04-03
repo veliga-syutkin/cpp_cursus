@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:20:12 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/02 21:58:43 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:23:55 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ Contact::Contact()
 	this->_nick = " ";
 	this->_secret = " ";
 	this->_phone = -1;
+};
+
+// Destructor
+Contact::~Contact()
+{
+	// Destructor
 };
 
 /* ************************************************************************** */
