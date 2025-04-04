@@ -23,3 +23,6 @@ cpp01-00 try-catch first baby steps
 v8
 cpp01-00 done!
 
+v9
+ex01 + ex02
+

@@ -6,15 +6,19 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/04 13:31:49 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/04/04 13:55:44 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/04 15:18:18 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	
+SRC =	main.cpp \
+		newZombie.cpp \
+		randomChump.cpp \
+		Zombie.cpp \
+		zombieHorde.cpp \
 
-HEADERS = 
+HEADERS = Zombie.hpp \
 
-NAME = 
+NAME = horde
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

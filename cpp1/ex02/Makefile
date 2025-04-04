@@ -6,15 +6,15 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/04 13:31:49 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/04/04 13:45:45 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/04 15:46:20 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	
+SRC =	main.cpp
 
 HEADERS = 
 
-NAME = 
+NAME = brain
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
