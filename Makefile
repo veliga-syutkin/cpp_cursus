@@ -6,14 +6,14 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 00:45:14 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/04/01 00:55:11 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/04 13:39:23 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Makefile for the all CPP Modules.
 
 CPP00_DIR = ./cpp0/
-# CPP01_DIR = ./cpp1/
+CPP01_DIR = ./cpp1/
 # CPP02_DIR = ./cpp2/
 # CPP03_DIR = ./cpp3/
 # CPP04_DIR = ./cpp4/
@@ -31,7 +31,7 @@ MAKEFILES = $(addprefix $(DIR_CPP), Makefile)
 
 all: $(MAKEFILES)
 	 @$(MAKE) -C $(CPP00_DIR)
-#	 @$(MAKE) -C $(CPP01_DIR)
+	 @$(MAKE) -C $(CPP01_DIR)
 #	 @$(MAKE) -C $(CPP02_DIR)
 #	 @$(MAKE) -C $(CPP03_DIR)
 #	 @$(MAKE) -C $(CPP04_DIR)
@@ -44,7 +44,7 @@ all: $(MAKEFILES)
 
 clean:
 	@$(MAKE) -C $(CPP00_DIR) clean
-#	@$(MAKE) -C $(CPP01_DIR) clean
+	@$(MAKE) -C $(CPP01_DIR) clean
 #	@$(MAKE) -C $(CPP02_DIR) clean
 #	@$(MAKE) -C $(CPP03_DIR) clean
 #	@$(MAKE) -C $(CPP04_DIR) clean
@@ -57,7 +57,7 @@ clean:
 
 fclean:
 	@$(MAKE) -C $(CPP00_DIR) fclean
-#	@$(MAKE) -C $(CPP01_DIR) fclean
+	@$(MAKE) -C $(CPP01_DIR) fclean
 #	@$(MAKE) -C $(CPP02_DIR) fclean
 #	@$(MAKE) -C $(CPP03_DIR) fclean
 #	@$(MAKE) -C $(CPP04_DIR) fclean
