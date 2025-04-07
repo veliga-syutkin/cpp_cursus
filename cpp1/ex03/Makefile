@@ -6,15 +6,22 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/04 13:31:49 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/04/04 13:45:45 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/07 01:26:07 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	
+SRC =	Human.cpp \
+		HumanA.cpp \
+		HumanB.cpp \
+		main.cpp \
+		Weapon.cpp
 
-HEADERS = 
+HEADERS =	Human.hpp \
+			HumanA.hpp \
+			HumanB.hpp \
+			Weapon.hpp
 
-NAME = 
+NAME = Human_and_Weapon
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
