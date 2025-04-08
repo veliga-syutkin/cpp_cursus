@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 01:13:35 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/07 02:34:20 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:44:58 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ int main()
 		raven.attack();
 		fists.setType("kicking shoes");
 		raven.attack();
+	}
+	{
+		// HumanA bob("Bob", NULL); // OUT OF SCOPE OF THE PROJECT		
+		// HumanA bob("Bob"; NULL);
 	}
 	return 0;
 }

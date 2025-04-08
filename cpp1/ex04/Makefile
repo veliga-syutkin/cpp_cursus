@@ -6,18 +6,18 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/04 13:31:49 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/04/04 13:45:45 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/08 14:19:10 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	
+SRC =	main.cpp
 
 HEADERS = 
 
-NAME = 
+NAME = ft_sed
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 OBJS = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -33,6 +33,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f *.replace
 
 re: fclean all
 

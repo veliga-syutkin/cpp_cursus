@@ -6,15 +6,16 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/04 13:31:49 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/04/04 13:45:45 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/08 18:41:20 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	
+SRC =	main.cpp \
+		Harl.cpp \
 
-HEADERS = 
+HEADERS = Harl.hpp \
 
-NAME = 
+NAME = Harl2.0
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
