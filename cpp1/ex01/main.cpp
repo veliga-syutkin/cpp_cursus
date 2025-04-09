@@ -6,11 +6,13 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 16:26:25 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/04 15:17:42 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:26:09 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+#include <cstdlib>
+#include <ctime>
 
 void	instantZombie()
 {
@@ -38,10 +40,12 @@ void	announceHorde(Zombie *horde, int N)
 
 int main(void)
 {
+	std::srand(std::time(0));
 	try
 	{
 		Zombie *zombieVillager = NULL;
 		Zombie *horde_of_zombies = NULL;
+		int	ZOMBIE_HORDE_SIZE = std::rand()%100 + 1; //returns a random number between 1 and 100
 		try
 		{
 			zombieVillager = newZombie("Pillager");

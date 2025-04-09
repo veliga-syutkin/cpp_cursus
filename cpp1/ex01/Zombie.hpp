@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 04:54:20 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/04 15:25:12 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:26:28 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <iostream>
 
 # define zombieSay "BraiiiiiiinnnzzzZ..."
-# define ZOMBIE_HORDE_SIZE 10
-# define uint unsigned int
+// # define ZOMBIE_HORDE_SIZE 10
+// # define uint unsigned int
 
 class Zombie
 {
