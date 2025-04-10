@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:51 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 22:30:03 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:28:07 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,16 +245,12 @@ const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 
 Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
-	if (a > b)
-		return a;
-	return b;
+    return (a > b) ? a : b;
 }
 
 const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
-	if (a > b)
-		return a;
-	return b;
+    return (a > b) ? a : b;
 }
 
 /* ************************************************************************** */

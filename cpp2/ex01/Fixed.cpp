@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:51 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 15:59:37 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:03:19 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	Fixed::setRawBits(int const raw)
 Fixed::Fixed(const int value) : _value(value * 256) // 256 = 2 ^ 8 as in _frac_bits
 {
 	std::cout << TERMINAL_GREEN << "\tInt constructor called" << TERMINAL_RESET << std::endl;
-	long int tmp = value * 256;
+	long tmp = (long)value * (long)256;
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
 		std::cerr << TERMINAL_RED << "\tInt constructor: value out of range" << TERMINAL_RESET << std::endl;
@@ -83,7 +83,7 @@ Fixed::Fixed(const int value) : _value(value * 256) // 256 = 2 ^ 8 as in _frac_b
 Fixed::Fixed(const float value)
 {
 	std::cout << TERMINAL_GREEN << "\tFloat constructor called" << TERMINAL_RESET << std::endl;
-	double tmp = roundf(value * 256); // 256 = 2 ^ 8 as in _frac_bits
+	double tmp = (double)roundf((double)value * (double)256); // 256 = 2 ^ 8 as in _frac_bits
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
 		std::cerr << TERMINAL_RED << "\tFloat constructor: value out of range" << TERMINAL_RESET << std::endl;
