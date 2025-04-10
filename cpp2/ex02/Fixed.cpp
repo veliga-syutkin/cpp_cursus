@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:51 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 18:36:30 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:27:16 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	Fixed::setRawBits(int const raw)
 
 Fixed::Fixed(const int value) //: _value(value * 256) // 256 = 2 ^ 8 as in _frac_bits
 {
-	long long int tmp = value * 256;
+	long int tmp = (long)value * (long)256;
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
 		std::cerr << TERMINAL_RED << "\tInt constructor: value out of range" << TERMINAL_RESET << std::endl;
@@ -80,7 +80,7 @@ Fixed::Fixed(const int value) //: _value(value * 256) // 256 = 2 ^ 8 as in _frac
 
 Fixed::Fixed(const float value)
 {
-	double tmp = roundf(value * 256); // 256 = 2 ^ 8 as in _frac_bits
+	double tmp = (double)roundf((double)value * (double)256); // 256 = 2 ^ 8 as in _frac_bits
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
 		std::cerr << TERMINAL_RED << "\tFloat constructor: value out of range" << TERMINAL_RESET << std::endl;
@@ -131,7 +131,7 @@ bool Fixed::operator!=(const Fixed &other) const
 
 Fixed Fixed::operator+(const Fixed &other) const
 {
-	long long int result = (this->_value / 256) + (other._value / 256);
+	long int result = (long)(this->_value / 256) + (long)(other._value / 256);
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
 		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
@@ -143,11 +143,11 @@ Fixed Fixed::operator+(const Fixed &other) const
 
 Fixed Fixed::operator-(const Fixed &other) const
 {
-	long long int result = (this->_value / 256) - (other._value / 256);
+	long int result = (long)(this->_value / 256) - (long)(other._value / 256);
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << "\tSubstract: value out of range" << TERMINAL_RESET << std::endl;
+		throw std::overflow_error("Substract: value out of range");
 	}
 	Fixed res(static_cast<int>(result));
 	return (res);
@@ -155,12 +155,12 @@ Fixed Fixed::operator-(const Fixed &other) const
 
 Fixed Fixed::operator*(const Fixed &other) const
 {
-	long long int result = (this->_value / 256) * (other._value / 256);
+	long int result = (long)(this->_value / 256) * (long)(other._value / 256);
 	std::cout << "result: " << result << std::endl;
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << "\tMultiplication: value out of range" << TERMINAL_RESET << std::endl;
+		throw std::overflow_error("Multiplication: value out of range");
 	}
 	Fixed res(static_cast<int>(result));
 	return (res);
@@ -168,11 +168,11 @@ Fixed Fixed::operator*(const Fixed &other) const
 
 Fixed Fixed::operator/(const Fixed &other) const
 {
-	long long int result = (this->_value / 256) / (other._value / 256);
+	long int result = (long)(this->_value / 256) / (long)(other._value / 256);
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << "\tDivision: value out of range" << TERMINAL_RESET << std::endl;
+		throw std::overflow_error("Division: value out of range");
 	}
 	result = result / 256; // 256 = 2 ^ 8 as in _frac_bits
 	Fixed res(static_cast<int>(result));
@@ -186,11 +186,11 @@ Fixed Fixed::operator/(const Fixed &other) const
 
 Fixed& Fixed::operator++() // Pre-increment
 {
-	long long int tmp = this->_value + 1;
+	long tmp = (long)(this->_value) + (long)(1);
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << "\tPre-incrementaion: value out of range" << TERMINAL_RESET << std::endl;
+		throw std::overflow_error("Pre-incrementaion: value out of range");
 	}
 	this->_value++;
 	return (*this);
@@ -199,11 +199,11 @@ Fixed& Fixed::operator++() // Pre-increment
 Fixed Fixed::operator++(int) // Post-increment
 {
 	Fixed temp(*this);
-	long long int tmp = this->_value + 1;
+	long int tmp = (long)(this->_value) + (long)(1);
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << "\tPost-increment: value out of range" << TERMINAL_RESET << std::endl;
+		throw std::overflow_error("Post-increment: value out of range");
 	}
 	this->_value++;
 	return (temp);
@@ -212,11 +212,11 @@ Fixed Fixed::operator++(int) // Post-increment
 Fixed& Fixed::operator--() // Pre-decrement
 {
 	this->_value--;
-	long long int tmp = this->_value - 1;
+	long int tmp = (long)(this->_value) - (long)(1);
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << "\tPre-decrement: value out of range" << TERMINAL_RESET << std::endl;
+		throw std::overflow_error("Pre-decrement: value out of range");
 	}
 	return (*this);
 }
@@ -225,11 +225,11 @@ Fixed Fixed::operator--(int) // Post-decrement
 {
 	Fixed temp(*this);
 	this->_value--;
-	long long int tmp = this->_value - 1;
+	long int tmp = (long)(this->_value) - (long)(1);
 	if (tmp > INT_MAX || tmp < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << "\tPost-decrement: value out of range" << TERMINAL_RESET << std::endl;
+		throw std::overflow_error("Post-decrement: value out of range");
 	}
 	return (temp);
 }
