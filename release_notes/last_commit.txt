@@ -1,1 +1,1 @@
-Improved cpp/hpp file creation script. Perhaps finished with cpp2/ex00. Makefile shenaningans. Added "terminal_colors.hpp" (declinable for .h in theory).
+done ex00. Fully understood OCF: Copy constructor DOES NOT *this->other.

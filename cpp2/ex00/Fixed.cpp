@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:51 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 10:48:20 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:31:46 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ Fixed::Fixed() : _value(0)
 }
 
 // Copy constructor
-Fixed::Fixed(const Fixed &other)
+Fixed::Fixed(const Fixed &other) : _value(other._value)
 {
 	std::cout << TERMINAL_GREEN << "\tCopy constructor called" << TERMINAL_RESET << std::endl;
-	this->_value = other._value;
 }
 
+// Assignment operator
 Fixed &Fixed::operator=(const Fixed &other)
 {
 	std::cout << TERMINAL_GREEN << "\tAssignation operator called" << TERMINAL_RESET << std::endl;

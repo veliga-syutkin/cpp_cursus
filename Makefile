@@ -6,7 +6,7 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 00:45:14 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/04/10 09:52:46 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/04/10 12:52:15 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ fclean:
 #	@$(MAKE) -C $(CPP07_DIR) fclean
 #	@$(MAKE) -C $(CPP08_DIR) fclean
 #	@$(MAKE) -C $(CPP09_DIR) fclean
+	rm -rf copy_constructor
 	@echo "All modules full cleaned."
 
 re: fclean all
@@ -202,6 +203,9 @@ class ORTHODOX { \n\
 		~ORTHODOX(); // Destructor \n\
 } \n\
 "
+
+copy_constructor: copy_constructor_example.cpp
+	c++ -Wall -Wextra -Werror -g3 -std=c++98 -o copy_constructor copy_constructor_example.cpp
 
 # SRC =	
 
