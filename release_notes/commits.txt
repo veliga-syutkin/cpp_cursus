@@ -62,3 +62,6 @@ ex02 almost done, need to debug for the subject and debug overflow happening for
 v21
 Should've casted s in long for proper check, MAJOR SKILL ISSUE - I need to be purified...
 
+v22
+BSP done !
+

@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:51 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 22:30:03 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/10 22:29:50 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@
 // Default constructor
 Fixed::Fixed() : _value(0)
 {
-    std::cout << TERMINAL_GREEN << "\tDefault constructor called" << TERMINAL_RESET << std::endl;
+    // std::cout << TERMINAL_GREEN << "\tDefault constructor called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
 Fixed::Fixed(const Fixed &other) : _value(other._value)
 {
-	std::cout << TERMINAL_GREEN << "\tCopy constructor called" << TERMINAL_RESET << std::endl;
+	// std::cout << TERMINAL_GREEN << "\tCopy constructor called" << TERMINAL_RESET << std::endl;
 }
 
 // Assignment operator
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	std::cout << TERMINAL_GREEN << "\tAssignation operator called" << TERMINAL_RESET << std::endl;
+	// std::cout << TERMINAL_GREEN << "\tAssignation operator called" << TERMINAL_RESET << std::endl;
     if (this != &other) {
         // Assignment logic
 		this->_value = other._value;
@@ -44,7 +44,7 @@ Fixed &Fixed::operator=(const Fixed &other)
 // Destructor
 Fixed::~Fixed()
 {
-	std::cout << TERMINAL_GREEN << "\tDestructor called" << TERMINAL_RESET << std::endl;
+	// std::cout << TERMINAL_GREEN << "\tDestructor called" << TERMINAL_RESET << std::endl;
 }
 
 //############################################################################//
@@ -156,7 +156,6 @@ Fixed Fixed::operator-(const Fixed &other) const
 Fixed Fixed::operator*(const Fixed &other) const
 {
 	long int result = (long)(this->_value / 256) * (long)(other._value / 256);
-	// std::cout << "result: " << result << std::endl;
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
 		std::cerr << TERMINAL_RED << "\tMultiplication: value out of range" << TERMINAL_RESET << std::endl;

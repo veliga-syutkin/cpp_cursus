@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:36:40 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 21:26:43 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/10 22:28:03 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int main( void )
 	// 	std::cout << "F: " << f << std::endl;
 	// }
 	{
-		Fixed a( INT_MAX / 256 );
-		Fixed b( INT_MAX / 256 );
+		Fixed a(42 );
+		Fixed b( 42.42f );
 		std::cout << "A: " << a << std::endl;
 		std::cout << "B: " << b << std::endl;
 		try 
