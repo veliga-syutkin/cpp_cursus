@@ -56,3 +56,6 @@ done ex00. Fully understood OCF: Copy constructor DOES NOT *this->other.
 v19
 done cpp2 ex01
 
+v20
+ex02 almost done, need to debug for the subject and debug overflow happening for myself.
+

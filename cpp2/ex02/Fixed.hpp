@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 15:05:07 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:45:28 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,28 @@ private:
 	Fixed(const float value);
 	float toFloat(void) const;
 	int toInt(void) const;
+
+	bool operator>(const Fixed &other) const;
+	bool operator<(const Fixed &other) const;
+	bool operator>=(const Fixed &other) const;
+	bool operator<=(const Fixed &other) const;
+	bool operator==(const Fixed &other) const;
+	bool operator!=(const Fixed &other) const;
+
+	Fixed operator+(const Fixed &other) const;
+	Fixed operator-(const Fixed &other) const;
+	Fixed operator*(const Fixed &other) const;
+	Fixed operator/(const Fixed &other) const;
+
+	Fixed &operator++(); // Pre-increment
+	Fixed operator++(int); // Post-increment
+	Fixed &operator--(); // Pre-decrement
+	Fixed operator--(int); // Post-decrement
+
+	static Fixed &min(Fixed &a, Fixed &b);
+	static const Fixed &min(const Fixed &a, const Fixed &b);
+	static Fixed &max(Fixed &a, Fixed &b);
+	static const Fixed &max(const Fixed &a, const Fixed &b);
 };
 
 std::ostream& operator<<(std::ostream &os, const Fixed &fixed);
