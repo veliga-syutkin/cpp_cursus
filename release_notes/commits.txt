@@ -53,3 +53,6 @@ Improved cpp/hpp file creation script. Perhaps finished with cpp2/ex00. Makefile
 v18
 done ex00. Fully understood OCF: Copy constructor DOES NOT *this->other.
 
+v19
+done cpp2 ex01
+
