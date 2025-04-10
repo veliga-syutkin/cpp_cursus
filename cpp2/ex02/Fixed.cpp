@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:51 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 23:28:07 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/11 00:38:14 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@
 // Default constructor
 Fixed::Fixed() : _value(0)
 {
-    std::cout << TERMINAL_GREEN << "\tDefault constructor called" << TERMINAL_RESET << std::endl;
+    // std::cout << TERMINAL_GREEN << "\tDefault constructor called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
 Fixed::Fixed(const Fixed &other) : _value(other._value)
 {
-	std::cout << TERMINAL_GREEN << "\tCopy constructor called" << TERMINAL_RESET << std::endl;
+	// std::cout << TERMINAL_GREEN << "\tCopy constructor called" << TERMINAL_RESET << std::endl;
 }
 
 // Assignment operator
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	std::cout << TERMINAL_GREEN << "\tAssignation operator called" << TERMINAL_RESET << std::endl;
+	// std::cout << TERMINAL_GREEN << "\tAssignation operator called" << TERMINAL_RESET << std::endl;
     if (this != &other) {
         // Assignment logic
 		this->_value = other._value;
@@ -44,7 +44,7 @@ Fixed &Fixed::operator=(const Fixed &other)
 // Destructor
 Fixed::~Fixed()
 {
-	std::cout << TERMINAL_GREEN << "\tDestructor called" << TERMINAL_RESET << std::endl;
+	// std::cout << TERMINAL_GREEN << "\tDestructor called" << TERMINAL_RESET << std::endl;
 }
 
 //############################################################################//
@@ -86,12 +86,16 @@ Fixed::Fixed(const float value)
 		std::cerr << TERMINAL_RED << "\tFloat constructor: value out of range" << TERMINAL_RESET << std::endl;
 		throw std::overflow_error("Float constructor: value out of range");
 	}
+	// std::cout << "tmp: " << tmp / 256 << std::endl;
 	this->_value = static_cast<int>(tmp);
+	// std::cout << "this->_value: " << (float)((float)this->_value / (float)256) << std::endl;
 }
 
 float	Fixed::toFloat(void) const
 {
-	return (static_cast<float>(this->_value) / 256); // 256 = 2 ^ 8 as in _frac_bits
+	// std::cout << "this->_value: " << (float)((float)this->_value / (float)256) << std::endl;
+	float temp = (float)((float)this->_value / (float)256);
+	return (temp); // 256 = 2 ^ 8 as in _frac_bits
 }
 
 int	Fixed::toInt(void) const
@@ -131,52 +135,64 @@ bool Fixed::operator!=(const Fixed &other) const
 
 Fixed Fixed::operator+(const Fixed &other) const
 {
-	long int result = (long)(this->_value / 256) + (long)(other._value / 256);
+	long int result = (long)this->getRawBits() + (long)other.getRawBits();
+	result = result * (256); // 256 = 2 ^ 8 as in _frac_bits
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tAddition: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Addition: value out of range");
+		std::cerr << TERMINAL_RED << MSG_ERR_ADD << TERMINAL_RESET << std::endl;
+		throw std::overflow_error(MSG_ERR_ADD);
 	}
-	Fixed res(static_cast<int>(result));
-	return (res);
+	Fixed tmp;
+	tmp.setRawBits(this->getRawBits() + other.getRawBits());
+	// tmp.setRawBits(tmp.getRawBits() / (256)); // 256 = 2 ^ 8 as in _frac_bits
+	return (tmp);
 }
 
 Fixed Fixed::operator-(const Fixed &other) const
 {
-	long int result = (long)(this->_value / 256) - (long)(other._value / 256);
+	long int result = (long)this->getRawBits() - (long)other.getRawBits();
+	result = result / (256); // 256 = 2 ^ 8 as in _frac_bits
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tSubstract: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Substract: value out of range");
+		std::cerr << TERMINAL_RED << MSG_ERR_SUB << TERMINAL_RESET << std::endl;
+		throw std::overflow_error(MSG_ERR_SUB);
 	}
-	Fixed res(static_cast<int>(result));
-	return (res);
+	Fixed tmp;
+	tmp.setRawBits(this->getRawBits() - other.getRawBits());
+	// tmp.setRawBits(tmp.getRawBits() / (256)); // 256 = 2 ^ 8 as in _frac_bits
+	return (tmp);
 }
 
 Fixed Fixed::operator*(const Fixed &other) const
 {
-	long int result = (long)(this->_value / 256) * (long)(other._value / 256);
-	// std::cout << "result: " << result << std::endl;
+	long int result = (long)this->getRawBits() * (long)other.getRawBits();
+	result = result / (256 * 256); // 256 = 2 ^ 8 as in _frac_bits
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tMultiplication: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Multiplication: value out of range");
+		std::cerr << TERMINAL_RED << MSG_ERR_MUL << TERMINAL_RESET << std::endl;
+		throw std::overflow_error(MSG_ERR_MUL);
 	}
-	Fixed res(static_cast<int>(result));
-	return (res);
+	Fixed tmp;
+	tmp.setRawBits(this->getRawBits() * other.getRawBits());
+	tmp.setRawBits(tmp.getRawBits() / (256)); // 256 = 2 ^ 8 as in _frac_bits
+	return (tmp);
 }
 
 Fixed Fixed::operator/(const Fixed &other) const
 {
-	long int result = (long)(this->_value / 256) / (long)(other._value / 256);
+	// std::cout << this->getRawBits() << std::endl;
+	long int result = (long)this->getRawBits() / (long)other.toInt();
+	// std::cout << "res: " << result << std::endl;
+	// result = result / (256 * 256); // 256 = 2 ^ 8 as in _frac_bits
 	if (result > INT_MAX || result < INT_MIN) // good practice
 	{
-		std::cerr << TERMINAL_RED << "\tDivision: value out of range" << TERMINAL_RESET << std::endl;
-		throw std::overflow_error("Division: value out of range");
+		std::cerr << TERMINAL_RED << MSG_ERR_DIV << TERMINAL_RESET << std::endl;
+		throw std::overflow_error(MSG_ERR_DIV);
 	}
-	result = result / 256; // 256 = 2 ^ 8 as in _frac_bits
-	Fixed res(static_cast<int>(result));
-	return (res);
+	Fixed tmp;
+	tmp.setRawBits((int)result);
+	// std::cout << "raw" << tmp.getRawBits() << std::endl;
+	return (tmp);
 }
 
 /* ************************************************************************** */
@@ -258,6 +274,6 @@ const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 
 std::ostream& operator<<(std::ostream &os, const Fixed &fixed)
 {
-	os << fixed.toFloat();
+	os << (float)fixed.toFloat();
 	return os;
 }

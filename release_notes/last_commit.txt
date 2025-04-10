@@ -1,1 +1,1 @@
-code readability + overflow protection in ex01
+Fixed floats converting to nearest int instead of being kept as floats on mul, div, add, sub.

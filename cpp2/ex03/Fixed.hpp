@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 09:45:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/04/10 17:45:28 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/04/11 00:47:10 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include "../terminal_colors.hpp"
 #include <iostream>
+
+# define MSG_ERR_ADD "\tAddition: value out of range"
+# define MSG_ERR_SUB "\tSubtraction: value out of range"
+# define MSG_ERR_MUL "\tMultiplication: value out of range"
+# define MSG_ERR_DIV "\tDivision: value out of range"
 
 class Fixed {
 private:

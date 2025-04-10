@@ -68,3 +68,6 @@ BSP done !
 v23
 code readability + overflow protection in ex01
 
+v24
+Fixed floats converting to nearest int instead of being kept as floats on mul, div, add, sub.
+
