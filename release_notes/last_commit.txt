@@ -1,1 +1,1 @@
-upgraded script for cpp/hpp file creation
+Improved cpp/hpp file creation script. Perhaps finished with cpp2/ex00. Makefile shenaningans. Added "terminal_colors.hpp" (declinable for .h in theory).

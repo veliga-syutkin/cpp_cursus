@@ -47,3 +47,6 @@ Learned C.O.P.Y. of the O.C.F (orthodox canonical form)
 v16
 upgraded script for cpp/hpp file creation
 
+v17
+Improved cpp/hpp file creation script. Perhaps finished with cpp2/ex00. Makefile shenaningans. Added terminal_colors.hpp (declinable for .h in theory).
+

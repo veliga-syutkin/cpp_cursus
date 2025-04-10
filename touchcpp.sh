@@ -16,18 +16,17 @@ cat <<EOF > "$HPP_FILE"
 #ifndef $INCLUDE_GUARD
 #define $INCLUDE_GUARD
 
-class ${NOM^} {
-private:
-    // Private members
+class ${NOM^}
+{
+	private:										// Private members
 
-protected:
-    // Protected members for inheritance
+	protected:										// Protected members for inheritance
 
-public:
-    ${NOM^}();                                 // Default constructor
-    ${NOM^}(const ${NOM^} &other);             // Copy constructor
-    ${NOM^} &operator=(const ${NOM^} &other);  // Assignment operator
-    ~${NOM^}();                                // Destructor
+	public:
+		${NOM^}();                                	// Default constructor
+		${NOM^}(const ${NOM^} &other);            	// Copy constructor
+		${NOM^} &operator=(const ${NOM^} &other); 	// Assignment operator
+		~${NOM^}();                               	// Destructor
 };
 
 #endif // $INCLUDE_GUARD
@@ -37,24 +36,46 @@ EOF
 cat <<EOF > "$CPP_FILE"
 #include "${HPP_FILE}"
 
-${NOM^}::${NOM^}() {
-    // Default constructor
+/* ************************************************************************** */
+//	Canonical Orthodox Form
+
+// Default constructor
+${NOM^}::${NOM^}()
+{
+	;
 }
 
-${NOM^}::${NOM^}(const ${NOM^} &other) {
-    // Copy constructor
+// Copy constructor
+${NOM^}::${NOM^}(const ${NOM^} &other)
+{
+	;
 }
 
-${NOM^} &${NOM^}::operator=(const ${NOM^} &other) {
-    if (this != &other) {
-        // Assignment logic
+// Assignment logic
+${NOM^} &${NOM^}::operator=(const ${NOM^} &other)
+{
+    if (this != &other)
+	{
+		;
     }
     return *this;
 }
 
-${NOM^}::~${NOM^}() {
-    // Destructor
+// Destructor
+${NOM^}::~${NOM^}()
+{
+	;
 }
+
+//############################################################################//
+/* ************************************************************************** */
+//	Private methods
+
+/* ************************************************************************** */
+// Protected methods
+
+/* ************************************************************************** */
+//	Public methods
 EOF
 
 echo "Fichiers orthodoxes créés : $CPP_FILE, $HPP_FILE"
