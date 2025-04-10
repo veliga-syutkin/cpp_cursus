@@ -9,35 +9,52 @@ fi
 NOM="$1"
 CPP_FILE="${NOM}.cpp"
 HPP_FILE="${NOM}.hpp"
+INCLUDE_GUARD=$(echo "${NOM}_HPP" | tr '[:lower:]' '[:upper:]')
 
-# Création du fichier .hpp avec squelette
+# Création du fichier .hpp avec la forme canonique
 cat <<EOF > "$HPP_FILE"
-#ifndef ${NOM^^}_HPP
-#define ${NOM^^}_HPP
+#ifndef $INCLUDE_GUARD
+#define $INCLUDE_GUARD
 
 class ${NOM^} {
-public:
-    ${NOM^}();
-    ~${NOM^}();
-
 private:
+    // Private members
 
+protected:
+    // Protected members for inheritance
+
+public:
+    ${NOM^}();                                 // Default constructor
+    ${NOM^}(const ${NOM^} &other);             // Copy constructor
+    ${NOM^} &operator=(const ${NOM^} &other);  // Assignment operator
+    ~${NOM^}();                                // Destructor
 };
 
-#endif // ${NOM^^}_HPP
+#endif // $INCLUDE_GUARD
 EOF
 
-# Création du fichier .cpp avec squelette
+# Création du fichier .cpp avec les définitions de la forme canonique
 cat <<EOF > "$CPP_FILE"
 #include "${HPP_FILE}"
 
 ${NOM^}::${NOM^}() {
-    // Constructeur
+    // Default constructor
+}
+
+${NOM^}::${NOM^}(const ${NOM^} &other) {
+    // Copy constructor
+}
+
+${NOM^} &${NOM^}::operator=(const ${NOM^} &other) {
+    if (this != &other) {
+        // Assignment logic
+    }
+    return *this;
 }
 
 ${NOM^}::~${NOM^}() {
-    // Destructeur
+    // Destructor
 }
 EOF
 
-echo "Fichiers créés : $CPP_FILE, $HPP_FILE"
+echo "Fichiers orthodoxes créés : $CPP_FILE, $HPP_FILE"
