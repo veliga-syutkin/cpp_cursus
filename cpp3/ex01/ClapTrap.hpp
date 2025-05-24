@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 11:32:32 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/24 13:41:54 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/24 20:36:59 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "../terminal_colors.hpp"
 #include <iostream>
+#include <climits>
 
 class ClapTrap
 {

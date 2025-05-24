@@ -6,15 +6,16 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 11:32:32 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/24 12:43:23 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/24 20:31:19 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
-#include "../terminal_colors.hpp"
-#include <iostream>
+# include "../terminal_colors.hpp"
+# include <iostream>
+# include <climits>
 
 class ClapTrap
 {

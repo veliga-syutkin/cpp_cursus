@@ -6,12 +6,11 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 11:43:31 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/24 15:09:01 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/24 20:37:02 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include <climits>
 
 /* ************************************************************************** */
 //	Canonical Orthodox Form
