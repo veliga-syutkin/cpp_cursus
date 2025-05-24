@@ -5,74 +5,50 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/01 00:45:14 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/05/24 18:10:47 by vsyutkin         ###   ########.fr        #
+#    Created: 2025/03/28 16:25:34 by vsyutkin          #+#    #+#              #
+#    Updated: 2025/04/10 09:54:43 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Makefile for the all CPP Modules.
+# Makefile for the entire CPP00 Module.
 
-CPP00_DIR = ./cpp0/
-CPP01_DIR = ./cpp1/
-CPP02_DIR = ./cpp2/
-CPP03_DIR = ./cpp3/
-# CPP04_DIR = ./cpp4/
-# CPP05_DIR = ./cpp5/
-# CPP06_DIR = ./cpp6/
-# CPP07_DIR = ./cpp7/
-# CPP08_DIR = ./cpp8/
-# CPP09_DIR = ./cpp9/
+EX00_DIR = ./ex00/
+EX01_DIR = ./ex01/
+EX02_DIR = ./ex02/
+EX03_DIR = ./ex03/
 
-DIR_CPP = $(CPP00_DIR) $(CPP01_DIR) $(CPP02_DIR) $(CPP03_DIR) $(CPP04_DIR) \
-	$(CPP05_DIR) $(CPP06_DIR) $(CPP07_DIR) $(CPP08_DIR) $(CPP09_DIR)
+DIR_EX = $(EX00_DIR) $(EX01_DIR) $(EX02_DIR) $(EX03_DIR)
 
 # List of all the Makefiles in the directories
-MAKEFILES = $(addprefix $(DIR_CPP), Makefile)
+MAKEFILES = $(addprefix $(DIR_EX), Makefile)
 
 all: $(MAKEFILES)
-	 @$(MAKE) -C $(CPP00_DIR)
-	 @$(MAKE) -C $(CPP01_DIR)
-	 @$(MAKE) -C $(CPP02_DIR)
-	 @$(MAKE) -C $(CPP03_DIR)
-#	 @$(MAKE) -C $(CPP04_DIR)
-#	 @$(MAKE) -C $(CPP05_DIR)
-#	 @$(MAKE) -C $(CPP06_DIR)
-#	 @$(MAKE) -C $(CPP07_DIR)
-#	 @$(MAKE) -C $(CPP08_DIR)
-#	 @$(MAKE) -C $(CPP09_DIR)
-	@echo "All modules compiled successfully."
+	@$(MAKE) -C $(EX00_DIR)
+	@$(MAKE) -C $(EX01_DIR)
+	@$(MAKE) -C $(EX02_DIR)
+	@$(MAKE) -C $(EX03_DIR)
+	@echo "All exercices compiled successfully."
 
 clean:
-	@$(MAKE) -C $(CPP00_DIR) clean
-	@$(MAKE) -C $(CPP01_DIR) clean
-	@$(MAKE) -C $(CPP02_DIR) clean
-	@$(MAKE) -C $(CPP03_DIR) clean
-#	@$(MAKE) -C $(CPP04_DIR) clean
-#	@$(MAKE) -C $(CPP05_DIR) clean
-#	@$(MAKE) -C $(CPP06_DIR) clean
-#	@$(MAKE) -C $(CPP07_DIR) clean
-#	@$(MAKE) -C $(CPP08_DIR) clean
-#	@$(MAKE) -C $(CPP09_DIR) clean
-	@echo "Cleaned all modules."
+	@$(MAKE) -C $(EX00_DIR) clean
+	@$(MAKE) -C $(EX01_DIR) clean
+	@$(MAKE) -C $(EX02_DIR) clean
+	@$(MAKE) -C $(EX03_DIR) clean
+	@echo "Cleaned all exercices."
 
 fclean:
-	@$(MAKE) -C $(CPP00_DIR) fclean
-	@$(MAKE) -C $(CPP01_DIR) fclean
-	@$(MAKE) -C $(CPP02_DIR) fclean
-	@$(MAKE) -C $(CPP03_DIR) fclean
-#	@$(MAKE) -C $(CPP04_DIR) fclean
-#	@$(MAKE) -C $(CPP05_DIR) fclean
-#	@$(MAKE) -C $(CPP06_DIR) fclean
-#	@$(MAKE) -C $(CPP07_DIR) fclean
-#	@$(MAKE) -C $(CPP08_DIR) fclean
-#	@$(MAKE) -C $(CPP09_DIR) fclean
-	rm -rf copy_constructor
-	@echo "All modules full cleaned."
+	@$(MAKE) -C $(EX00_DIR) fclean
+	@$(MAKE) -C $(EX01_DIR) fclean
+	@$(MAKE) -C $(EX02_DIR) fclean
+	@$(MAKE) -C $(EX03_DIR) fclean
+	@echo "All exercices full cleaned."
 
 re: fclean all
-	@echo "All modules recompiled successfully."
+	@echo "All exercices recompiled successfully."
 
 .PHONY: all clean fclean re
+
+# **************************************************************************** #
 
 # ############################################################################ #
 #										 # VERSIONS UPDATER AND GIT MANAGEMENT #
@@ -183,58 +159,6 @@ git_commit:
 
 git_gitpush:
 	git push
-#																			   #
-# ############################################################################ #
-
-# ############################################################################ #
-#									CLASS ORTHODOX CANONICAL FORM AKA C.O.P.Y. #
-
-canonical: 
-	@echo " \n\
-class ORTHODOX { \n\
-	private: \n\
-		// stuff \n\
-	protected: \n\
-		// inheritance stuff \n\
-	public: \n\
-		ORTHODOX(); // Default constructor. Put in private if the class has no purpose being standalone.\n\
-		ORTHODOX(const ORTHODOX &other); // Copy constructor \n\
-		ORTHODOX &operator =(const ORTHODOX &other); // Assignement operator \n\
-		~ORTHODOX(); // Destructor \n\
-} \n\
-"
-
-copy_constructor: copy_constructor_example.cpp
-	c++ -Wall -Wextra -Werror -g3 -std=c++98 -o copy_constructor copy_constructor_example.cpp
-
-# SRC =	
-
-# HEADERS = 
-
-# NAME = 
-
-# CXX = c++
-# CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-# OBJS = $(SRC:.cpp=.o)
-
-# all: $(NAME)
-
-# $(NAME): $(OBJS)
-# 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-# %.o: %.cpp $(HEADERS)
-# 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# clean:
-# 	rm -f $(OBJS)
-
-# fclean: clean
-# 	rm -f $(NAME)
-
-# re: fclean all
-
-# .PHONY: all clean fclean re
-
 #																			   #
 # ############################################################################ #
 
