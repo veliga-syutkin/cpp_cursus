@@ -1,9 +1,18 @@
 #!/bin/bash
 
-if [ "$#" -lt 1 ]; then
-  echo "Usage : $0 NomClasse1 [NomClasse2 ...]"
+if [ -z "$1" ]; then
+  echo "Usage : $0 NomDuFichier (sans extension)"
   exit 1
 fi
+
+NOM="$1"
+CPP_FILE="${NOM}.cpp"
+HPP_FILE="${NOM}.hpp"
+INCLUDE_GUARD=$(echo "${NOM}_HPP" | tr '[:lower:]' '[:upper:]')
+CLASS_NAME="${NOM^}"
+USER="$(whoami)"
+DATE_CREATED=$(date +"%Y/%m/%d %H:%M:%S")
+DATE_UPDATED="$DATE_CREATED"  # Au départ même date
 
 generate_42_header() {
   local author="vsyutkin"
@@ -25,6 +34,7 @@ generate_42_header() {
 EOF
 }
 
+# Bannière ASCII d'ornement, tu peux la garder ou pas
 BANNER='/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @#######_#_##_######_____########____########______##########_#_##_######@ */
 /* @######/\| |/\\####/ ____|######/ __ \######|  ____|########/\| |/\|#####@ */
@@ -40,19 +50,11 @@ SEPARATOR='/********************************************************************
 /*-._.-""-._.-""-._.-""-._.-""-._.-""-._.-""-._.-""-._.-""-._.-""-._.-""-._.-"*/
 /******************************************************************************/'
 
-for NOM in "$@"; do
-  CPP_FILE="${NOM}.cpp"
-  HPP_FILE="${NOM}.hpp"
-  INCLUDE_GUARD=$(echo "${NOM}_HPP" | tr '[:lower:]' '[:upper:]')
-  CLASS_NAME="${NOM^}"
-  DATE_CREATED=$(date +"%Y/%m/%d %H:%M:%S")
-  DATE_UPDATED="$DATE_CREATED"
-
-  # Génère .hpp
-  {
-    generate_42_header
-    echo
-    cat <<EOF
+# Génère fichier .hpp
+{
+generate_42_header "${HPP_FILE}" "$DATE_CREATED" "$DATE_UPDATED"
+echo
+cat <<EOF
 #ifndef $INCLUDE_GUARD
 #define $INCLUDE_GUARD
 
@@ -71,26 +73,26 @@ class $CLASS_NAME
 
 #endif // $INCLUDE_GUARD
 EOF
-  } > "$HPP_FILE"
+} > "$HPP_FILE"
 
-  # Génère .cpp
-  {
-    generate_42_header
-    echo
-    cat <<EOF
+# Génère fichier .cpp
+{
+generate_42_header "${CPP_FILE}" "$DATE_CREATED" "$DATE_UPDATED"
+echo
+cat <<EOF
 #include "$HPP_FILE"
 
 $BANNER
 // Default constructor
 $CLASS_NAME::$CLASS_NAME()
 {
-	std::cout << TERMINAL_GREEN << "\tDefault constructor $CLASS_NAME called" << TERMINAL_RESET << std::endl;
+	;
 }
 
 // Copy constructor
 $CLASS_NAME::$CLASS_NAME(const $CLASS_NAME &other)
 {
-	std::cout << TERMINAL_GREEN << "\tCopy constructor $CLASS_NAME called" << TERMINAL_RESET << std::endl;
+	;
 }
 
 // Assignment logic
@@ -98,15 +100,15 @@ $CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &other)
 {
 	if (this != &other)
 	{
-		std::cout << TERMINAL_GREEN << "\tAssignation operator $CLASS_NAME called" << TERMINAL_RESET << std::endl;
+		;
 	}
-	return (*this);
+	return *this;
 }
 
 // Destructor
 $CLASS_NAME::~$CLASS_NAME()
 {
-	std::cout << TERMINAL_GREEN << "\tDestructor $CLASS_NAME called" << TERMINAL_RESET << std::endl;
+	;
 }
 
 $SEPARATOR
@@ -118,7 +120,6 @@ $SEPARATOR
 /* ************************************************************************** */
 //	Public methods
 EOF
-  } > "$CPP_FILE"
+} > "$CPP_FILE"
 
-  echo "Fichiers orthodoxes créés : $CPP_FILE, $HPP_FILE"
-done
+echo "Fichiers orthodoxes créés : $CPP_FILE, $HPP_FILE"
