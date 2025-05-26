@@ -1,16 +1,12 @@
 /* ************************************************************************** */
+/*                                                                      42.fr */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 15:42:11 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/26 19:20:30 by vsyutkin         ###   ########.fr       */
+/*   Created: 2025/05/26 15:35:19 by vsyutkin                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongCat.hpp"
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @#######_#_##_######_____########____########______##########_#_##_######@ */
@@ -21,33 +17,31 @@
 /* @######\/|_|\/#####\_____|#(_)##\____/##(_)#|_|######(_)####\/|_|\/######@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 // Default constructor
-Animal::Animal() : type("Default Animal Type")
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-	std::cout << TERMINAL_GREEN << "\tDefault constructor Animal called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tDefault constructor WrongCat called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
-Animal::Animal(const Animal &other) : type(other.type)
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) // Call the base class copy constructor
 {
-	std::cout << TERMINAL_GREEN << "\tCopy constructor Animal called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tCopy constructor WrongCat called" << TERMINAL_RESET << std::endl;
 }
 
 // Assignment logic
-Animal &Animal::operator=(const Animal &other)
+WrongCat &WrongCat::operator=(const WrongCat &other)
 {
-    if (this != &other)
-    {
-        type = other.type;
-        std::cout << TERMINAL_GREEN << "\tAssignation operator Animal called" << TERMINAL_RESET << std::endl;
-    }
-    return *this;
+	if (this != &other)
+	{
+		std::cout << TERMINAL_GREEN << "\tAssignation operator WrongCat called" << TERMINAL_RESET << std::endl;
+	}
+	return *this;
 }
 
 // Destructor
-Animal::~Animal()
+WrongCat::~WrongCat()
 {
-
-	std::cout << TERMINAL_GREEN << "\tDestructor Animal called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tDestructor WrongCat called" << TERMINAL_RESET << std::endl;
 }
 
 /******************************************************************************/
@@ -62,19 +56,3 @@ Animal::~Animal()
 
 /* ************************************************************************** */
 //	Public methods
-
-Animal::Animal(const std::string &type_) : type(type_)
-{
-	std::cout << TERMINAL_GREEN << "\tConstructor Animal with type called" << TERMINAL_RESET << std::endl;
-}
-
-void Animal::makeSound() const
-{
-	std::cout << TERMINAL_RED << "\tDefault animal sound(TM)" << TERMINAL_RESET << std::endl;
-}
-
-std::string Animal::getType() const
-{
-	return (this->type);
-}
-

@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 15:42:07 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/26 20:40:55 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:17:50 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,9 @@ int main()
 		basic.makeSound();
 		basic.getIdea(0);
 	}
+/* Uncomment following to test uncompilability of abstract class Animal.*/
+	// {
+	// 	Animal test; 
+	// }
 	return 0;
 }

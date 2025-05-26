@@ -1,16 +1,12 @@
 /* ************************************************************************** */
+/*                                                                      42.fr */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 15:42:11 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/26 19:20:30 by vsyutkin         ###   ########.fr       */
+/*   Created: 2025/05/26 15:35:19 by vsyutkin                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @#######_#_##_######_____########____########______##########_#_##_######@ */
@@ -21,33 +17,32 @@
 /* @######\/|_|\/#####\_____|#(_)##\____/##(_)#|_|######(_)####\/|_|\/######@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 // Default constructor
-Animal::Animal() : type("Default Animal Type")
+WrongAnimal::WrongAnimal() : type("WrongAnimal")
 {
-	std::cout << TERMINAL_GREEN << "\tDefault constructor Animal called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tDefault constructor WrongAnimal called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
-Animal::Animal(const Animal &other) : type(other.type)
+WrongAnimal::WrongAnimal(const WrongAnimal &other) : type(other.type) // Copy the type from the other WrongAnimal
 {
-	std::cout << TERMINAL_GREEN << "\tCopy constructor Animal called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tCopy constructor WrongAnimal called" << TERMINAL_RESET << std::endl;
 }
 
 // Assignment logic
-Animal &Animal::operator=(const Animal &other)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
-    if (this != &other)
-    {
-        type = other.type;
-        std::cout << TERMINAL_GREEN << "\tAssignation operator Animal called" << TERMINAL_RESET << std::endl;
-    }
-    return *this;
+	if (this != &other)
+	{
+		this->type = other.type; // Assuming type is a member variable
+		std::cout << TERMINAL_GREEN << "\tAssignation operator WrongAnimal called" << TERMINAL_RESET << std::endl;
+	}
+	return *this;
 }
 
 // Destructor
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-
-	std::cout << TERMINAL_GREEN << "\tDestructor Animal called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tDestructor WrongAnimal called" << TERMINAL_RESET << std::endl;
 }
 
 /******************************************************************************/
@@ -63,18 +58,17 @@ Animal::~Animal()
 /* ************************************************************************** */
 //	Public methods
 
-Animal::Animal(const std::string &type_) : type(type_)
+WrongAnimal::WrongAnimal(const std::string &type_) : type(type_)
 {
-	std::cout << TERMINAL_GREEN << "\tConstructor Animal with type called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tConstructor with type WrongAnimal called" << TERMINAL_RESET << std::endl;
 }
 
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
-	std::cout << TERMINAL_RED << "\tDefault animal sound(TM)" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_YELLOW << "WrongAnimal makes a sound!" << TERMINAL_RESET << std::endl;
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
-	return (this->type);
+	return type;
 }
-
