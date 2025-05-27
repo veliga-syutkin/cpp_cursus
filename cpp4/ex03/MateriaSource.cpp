@@ -17,14 +17,23 @@
 /* @######\/|_|\/#####\_____|#(_)##\____/##(_)#|_|######(_)####\/|_|\/######@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 // Default constructor
-MateriaSource::MateriaSource() : _materia(NULL)
+MateriaSource::MateriaSource() : _indexMateria(0)
 {
+	for (int i = 0; i < 4; ++i)
+		this->_materia[i] = NULL; // Initialize all materia pointers to NULL
 	std::cout << TERMINAL_GREEN << "\tDefault constructor MateriaSource called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
-MateriaSource::MateriaSource(const MateriaSource &other) : _materia(other._materia)
+MateriaSource::MateriaSource(const MateriaSource &other) : _indexMateria(other._indexMateria)
 {
+	for (int i = 0; i < 4; ++i)
+	{
+		if (other._materia[i])
+			this->_materia[i] = other._materia[i]->clone();
+		else
+			this->_materia[i] = NULL;
+	}
 	std::cout << TERMINAL_GREEN << "\tCopy constructor MateriaSource called" << TERMINAL_RESET << std::endl;
 }
 
@@ -33,9 +42,16 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 {
 	if (this != &other)
 	{
-		if (_materia)
-			delete _materia; // Clean up existing materia if any
-		_materia = other._materia; // Copy the materia from the other instance
+		for (int i = 0; i < 4; ++i)
+		{
+			if (other._materia[i])
+			{
+				_materia[i] = other._materia[i]->clone(); // Clone the materia from the other object
+				delete other._materia[i]; // Clean up the original materia to avoid memory leaks
+			}
+			else
+				_materia[i] = NULL; // Set to NULL if no materia exists
+		}
 		std::cout << TERMINAL_GREEN << "\tAssignation operator MateriaSource called" << TERMINAL_RESET << std::endl;
 	}
 	return (*this);
@@ -44,10 +60,11 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 // Destructor
 MateriaSource::~MateriaSource()
 {
-	if (_materia)
+	for (int i = 0; i < 4; ++i)
 	{
-		delete _materia; // Clean up materia if it exists
-		_materia = NULL; // Set pointer to NULL to avoid dangling pointer
+		if (_materia[i])
+			delete _materia[i]; // Clean up each materia in the array
+		_materia[i] = NULL; // Set to NULL after deletion
 	}
 	std::cout << TERMINAL_GREEN << "\tDestructor MateriaSource called" << TERMINAL_RESET << std::endl;
 }
@@ -69,12 +86,21 @@ void	MateriaSource::learnMateria(AMateria *m)
 {
 	if (!m)
 		return;
-	if (_materia)
-		delete (_materia);
-	_materia = m->clone(); // Clone the materia to store it
+	if (_indexMateria < 5)
+	{
+		_materia[_indexMateria] = m->clone(); // Clone the materia to store it
+		_indexMateria++;
+	}
+	else
+	{
+		std::cout << "\tMateriaSource is full, cannot learn more Materia." << std::endl;
+	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const &type)
 {
-	if (!_materia)
+	for (int i = 0; i < _indexMateria; ++i)
+		if (_materia[i] && _materia[i]->getType() == type)
+			return (_materia[i]->clone()); // Return a clone of the requested materia
+	return (NULL); // If no matching materia found, return NULL
 }

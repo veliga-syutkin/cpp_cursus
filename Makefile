@@ -6,7 +6,7 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 00:45:14 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/05/24 18:10:47 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/05/27 14:38:16 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CPP00_DIR = ./cpp0/
 CPP01_DIR = ./cpp1/
 CPP02_DIR = ./cpp2/
 CPP03_DIR = ./cpp3/
-# CPP04_DIR = ./cpp4/
+CPP04_DIR = ./cpp4/
 # CPP05_DIR = ./cpp5/
 # CPP06_DIR = ./cpp6/
 # CPP07_DIR = ./cpp7/
@@ -34,7 +34,7 @@ all: $(MAKEFILES)
 	 @$(MAKE) -C $(CPP01_DIR)
 	 @$(MAKE) -C $(CPP02_DIR)
 	 @$(MAKE) -C $(CPP03_DIR)
-#	 @$(MAKE) -C $(CPP04_DIR)
+	 @$(MAKE) -C $(CPP04_DIR)
 #	 @$(MAKE) -C $(CPP05_DIR)
 #	 @$(MAKE) -C $(CPP06_DIR)
 #	 @$(MAKE) -C $(CPP07_DIR)
@@ -47,7 +47,7 @@ clean:
 	@$(MAKE) -C $(CPP01_DIR) clean
 	@$(MAKE) -C $(CPP02_DIR) clean
 	@$(MAKE) -C $(CPP03_DIR) clean
-#	@$(MAKE) -C $(CPP04_DIR) clean
+	@$(MAKE) -C $(CPP04_DIR) clean
 #	@$(MAKE) -C $(CPP05_DIR) clean
 #	@$(MAKE) -C $(CPP06_DIR) clean
 #	@$(MAKE) -C $(CPP07_DIR) clean
@@ -60,7 +60,7 @@ fclean:
 	@$(MAKE) -C $(CPP01_DIR) fclean
 	@$(MAKE) -C $(CPP02_DIR) fclean
 	@$(MAKE) -C $(CPP03_DIR) fclean
-#	@$(MAKE) -C $(CPP04_DIR) fclean
+	@$(MAKE) -C $(CPP04_DIR) fclean
 #	@$(MAKE) -C $(CPP05_DIR) fclean
 #	@$(MAKE) -C $(CPP06_DIR) fclean
 #	@$(MAKE) -C $(CPP07_DIR) fclean

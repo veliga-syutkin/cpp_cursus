@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 08:41:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 08:41:59 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/27 14:28:12 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../terminal_colors.hpp"
 # include "ICharacter.hpp"
 # include <iostream>
+
+class ICharacter; // Forward declaration to avoid circular dependency
 
 class AMateria
 {
@@ -28,7 +30,7 @@ class AMateria
 		AMateria();                                	// Default constructor
 		AMateria(const AMateria &other);         	// Copy constructor
 		AMateria &operator=(const AMateria &other); // Assignment operator
-		~AMateria();                                	// Destructor
+		virtual ~AMateria();                                	// Destructor
 
 		AMateria(std::string const &type);
 		std::string const &getType() const;			// Returns the materia type;

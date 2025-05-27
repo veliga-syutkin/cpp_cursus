@@ -6,26 +6,30 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 09:52:01 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/05/26 19:23:06 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/05/27 14:21:52 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLASSES =	Animal \
-			BrainedAnimal \
-		Dog \
-		Cat \
-		Brain \
+CLASSES =	AMateria \
+			Character \
+			Cure \
+			Ice \
+			MateriaSource \
+
+INTERFACES =	IMateriaSource \
+			ICharacter \
 
 # # **************************************************************************** #
 
 SRC =	main.cpp \
 		$(addsuffix .cpp, $(CLASSES))
 	
-HEADERS =	$(addsuffix .hpp, $(CLASSES))
+HEADERS =	$(addsuffix .hpp, $(CLASSES)) \
+			$(addsuffix .hpp, $(INTERFACES))
 
 # **************************************************************************** #
 
-NAME = Animals
+NAME = Materia
 
 # **************************************************************************** #
 

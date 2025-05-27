@@ -86,3 +86,6 @@ cpp4 mandatory done!
 v29
 cppp4 ex03 wip
 
+v30
+cpp3-ex03 needs to be fully checked, and it's done!
+

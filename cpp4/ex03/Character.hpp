@@ -17,8 +17,8 @@ class Character : public ICharacter
 {
 	private:										// Private members
 		AMateria	*_inventory[4];					// Array of pointers to AMateria
-		std::string	_name;
 		short		_inventoryIndex;
+		std::string	_name;
 		int			_whereFreeSlot();
 	protected:										// Protected members for inheritance
 
@@ -28,6 +28,7 @@ class Character : public ICharacter
 		Character &operator=(const Character &other); // Assignment operator
 		~Character();                                	// Destructor
 
+		Character(std::string const &name);         	// Constructor with name
 		std::string const &getName() const;
 		void equip(AMateria *m);
 		void unequip(int idx);

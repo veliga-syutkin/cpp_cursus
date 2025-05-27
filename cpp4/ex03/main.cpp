@@ -6,13 +6,15 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 08:00:57 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 09:16:01 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/27 14:09:33 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Character.hpp"
 #include "MateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 int main()
 {

@@ -1,8 +1,12 @@
 /* ************************************************************************** */
-/*                                                                      42.fr */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*   Created: 2025/05/27 07:52:54 by vsyutkin                                 */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/27 14:26:58 by vsyutkin          #+#    #+#             */
+/*   Updated: 2025/05/27 14:32:52 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +21,23 @@
 /* @######\/|_|\/#####\_____|#(_)##\____/##(_)#|_|######(_)####\/|_|\/######@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 // Default constructor
-Character::Character() : _inventoryIndex (0), _name("Nameless")
+Character::Character() : _inventoryIndex(0), _name("Nameless")
 {
+	for (int i = 0; i < 4; ++i)
+		this->_inventory[i] = NULL;
 	std::cout << TERMINAL_GREEN << "\tDefault constructor Character called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
 Character::Character(const Character &other) : _inventoryIndex(other._inventoryIndex), _name(other._name)
 {
+	for (int i = 0; i < 4; ++i)
+	{
+		if (other._inventory[i])
+			this->_inventory[i] = other._inventory[i]->clone();
+		else
+			this->_inventory[i] = NULL;
+	}
 	std::cout << TERMINAL_GREEN << "\tCopy constructor Character called" << TERMINAL_RESET << std::endl;
 }
 
@@ -39,8 +52,8 @@ Character &Character::operator=(const Character &other)
 		{
 			if (this->_inventory[i])
 				delete this->_inventory[i];
-			if (this->_inventory[i] = other._inventory[i])
-				other._inventory[i]->clone();
+			if (other._inventory[i])
+				this->_inventory[i] = other._inventory[i]->clone();
 			else
 				this->_inventory[i] = NULL;
 		}
@@ -84,6 +97,14 @@ int	Character::_whereFreeSlot()
 /* ************************************************************************** */
 //	Public methods
 
+Character::Character(std::string const &name) : _inventoryIndex(0), _name(name)
+{
+	for (int i = 0; i < 4; ++i)
+		this->_inventory[i] = NULL;
+	std::cout << TERMINAL_GREEN << "\tConstructor Character with name called" << TERMINAL_RESET << std::endl;
+}
+
+
 const std::string& Character::getName() const
 {
 	return (this->_name);
@@ -93,11 +114,11 @@ void Character::equip(AMateria *m)
 {
 	if (!m)
 		return ;
-	int _inventoryIndex = _whereFreeSlot();
-	if (_inventoryIndex < 0)
+	int _inventoryParser = _whereFreeSlot();
+	if (_inventoryParser < 0)
 		return ;
-	_inventory[_inventoryIndex] = m;
-	std::cout << TERMINAL_YELLOW << _name << " equips " << m->getType() << " at slot " << _inventoryIndex + 1 << "th" << TERMINAL_RESET << std::endl;
+	_inventory[_inventoryParser] = m->clone();	// Clone the materia to store it
+	std::cout << TERMINAL_YELLOW << _name << " equips " << m->getType() << " at slot " << _inventoryParser + 1 << "th" << TERMINAL_RESET << std::endl;
 }
 
 void Character::unequip(int idx)

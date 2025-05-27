@@ -16,8 +16,8 @@
 class MateriaSource : public IMateriaSource
 {
 	private:										// Private members
-		AMateria *_materia;
-	
+		AMateria	*_materia[4];
+		int			_indexMateria;
 	protected:										// Protected members for inheritance
 
 	public:

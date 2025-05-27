@@ -1,8 +1,12 @@
 /* ************************************************************************** */
-/*                                                                      42.fr */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*   Created: 2025/05/27 07:52:54 by vsyutkin                                 */
+/*                                                        :::      ::::::::   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/27 14:20:10 by vsyutkin          #+#    #+#             */
+/*   Updated: 2025/05/27 14:24:04 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -12,6 +16,8 @@
 # include "../terminal_colors.hpp"
 # include "AMateria.hpp"
 # include <iostream>
+
+class AMateria; // Forward declaration to avoid circular dependency
 
 class ICharacter
 {
