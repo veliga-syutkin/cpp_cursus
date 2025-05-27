@@ -22,6 +22,14 @@ class WrongCat : public WrongAnimal
 		WrongCat(const WrongCat &other);         	// Copy constructor
 		WrongCat &operator=(const WrongCat &other); // Assignment operator
 		~WrongCat();                                	// Destructor
+
+		void makeSound() const; 					// Override* makeSound method
 };
+
+/*
+
+* - in this case, the `makeSound` method from WrongAnimal is not virtual, so `makeSound` from WrongCat Does NOT override the base class method.
+
+*/
 
 #endif // WRONGCAT_HPP

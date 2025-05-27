@@ -26,7 +26,7 @@ class WrongAnimal
 		virtual ~WrongAnimal();                                	// Destructor
 
 		WrongAnimal(const std::string &type_); // Constructor with type
-		virtual void makeSound() const;
+		void makeSound() const;
 		std::string getType() const;
 };
 

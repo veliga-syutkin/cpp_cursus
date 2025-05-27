@@ -56,3 +56,8 @@ WrongCat::~WrongCat()
 
 /* ************************************************************************** */
 //	Public methods
+
+void	WrongCat::makeSound() const
+{
+	std::cout << TERMINAL_YELLOW << "\tWrongCat makes sound: Meow!" << TERMINAL_RESET << std::endl;
+}

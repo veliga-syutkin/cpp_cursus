@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 15:42:07 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 06:17:03 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:47:26 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,16 @@ int main()
 	std::cout << SEPERATOR << std::endl;
 	{
 		Dog basic;
+		std::cout << "Dog BSC thinks about: " << basic.getIdea(0) << std::endl;
 		{
 			Dog tmp = basic; // Copy constructor
 			tmp.makeSound();
-			tmp.getIdea(0);
+			tmp.initializeIdeas(100);
+			std::cout << "Dog TMP thinks about: " << tmp.getIdea(0) << std::endl;
+			std::cout << "Dog BSC thinks about: " << basic.getIdea(0) << std::endl;
 		} // Destructor called for tmp
 		basic.makeSound();
-		basic.getIdea(0);
+		std::cout << "Dog BSC thinks about: " << basic.getIdea(0) << std::endl;
 	}
 	return 0;
 }
