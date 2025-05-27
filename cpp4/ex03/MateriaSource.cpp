@@ -1,16 +1,12 @@
 /* ************************************************************************** */
+/*                                                                      42.fr */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 19:24:15 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 05:54:37 by vsyutkin         ###   ########.fr       */
+/*   Created: 2025/05/27 07:52:54 by vsyutkin                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "MateriaSource.hpp"
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @#######_#_##_######_____########____########______##########_#_##_######@ */
@@ -21,35 +17,39 @@
 /* @######\/|_|\/#####\_____|#(_)##\____/##(_)#|_|######(_)####\/|_|\/######@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 // Default constructor
-Dog::Dog() : BrainedAnimal("Dog")
+MateriaSource::MateriaSource() : _materia(NULL)
 {
-	this->brain = BrainedAnimal::getBrain(); // Initialize the brain pointer to the base class brain
-	initializeIdeas(10); // Initialize ideas with a power of 1
-	std::cout << TERMINAL_GREEN << "\tDefault constructor Dog called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tDefault constructor MateriaSource called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
-Dog::Dog(const Dog &other) : BrainedAnimal(other) // Call the base class copy constructor
+MateriaSource::MateriaSource(const MateriaSource &other) : _materia(other._materia)
 {
-	this->brain = other.getBrain(); // Initialize the brain pointer to the copied brain
-	std::cout << TERMINAL_GREEN << "\tCopy constructor Dog called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tCopy constructor MateriaSource called" << TERMINAL_RESET << std::endl;
 }
 
 // Assignment logic
-Dog &Dog::operator=(const Dog &other)
+MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 {
 	if (this != &other)
 	{
-		BrainedAnimal::operator=(other); // Call the base class assignment operator
-		std::cout << TERMINAL_GREEN << "\tAssignation operator Dog called" << TERMINAL_RESET << std::endl;
+		if (_materia)
+			delete _materia; // Clean up existing materia if any
+		_materia = other._materia; // Copy the materia from the other instance
+		std::cout << TERMINAL_GREEN << "\tAssignation operator MateriaSource called" << TERMINAL_RESET << std::endl;
 	}
-	return *this;
+	return (*this);
 }
 
 // Destructor
-Dog::~Dog()
+MateriaSource::~MateriaSource()
 {
-	std::cout << TERMINAL_GREEN << "\tDestructor Dog called" << TERMINAL_RESET << std::endl;
+	if (_materia)
+	{
+		delete _materia; // Clean up materia if it exists
+		_materia = NULL; // Set pointer to NULL to avoid dangling pointer
+	}
+	std::cout << TERMINAL_GREEN << "\tDestructor MateriaSource called" << TERMINAL_RESET << std::endl;
 }
 
 /******************************************************************************/
@@ -65,7 +65,16 @@ Dog::~Dog()
 /* ************************************************************************** */
 //	Public methods
 
-void Dog::makeSound() const
+void	MateriaSource::learnMateria(AMateria *m)
 {
-	std::cout << TERMINAL_YELLOW << BARK << TERMINAL_RESET << std::endl;
+	if (!m)
+		return;
+	if (_materia)
+		delete (_materia);
+	_materia = m->clone(); // Clone the materia to store it
+}
+
+AMateria* MateriaSource::createMateria(std::string const &type)
+{
+	if (!_materia)
 }

@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                      42.fr */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
+/*                                                                            */
+/*   Created: 2025/05/27 07:52:54 by vsyutkin                                 */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
+
+# include "../terminal_colors.hpp"
+# include "AMateria.hpp"
+# include <iostream>
+
+class ICharacter
+{
+	private:										// Private members
+
+	protected:										// Protected members for inheritance
+
+	public:
+		/* Class Interface - thus C.O.F. doesn't apply: 
+		ICharacter();                                	// Default constructor
+		ICharacter(const ICharacter &other);         	// Copy constructor
+		ICharacter &operator=(const ICharacter &other); // Assignment operator
+		*/
+	// Virtual deconstructor, void-defined in .hpp is tolerated to avoid create almost empty .cpp file
+		virtual ~ICharacter() { };                                	// Destructor
+
+		virtual std::string const &getName() const = 0;
+		virtual void equip(AMateria *m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter &target) = 0;
+};
+
+#endif // ICHARACTER_HPP

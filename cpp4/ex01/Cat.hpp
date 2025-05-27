@@ -23,7 +23,6 @@ class Cat : public BrainedAnimal
 {
 	private:										// Private members
 		Brain *brain;
-		void _catIdeas();
 	protected:										// Protected members for inheritance
 
 	public:

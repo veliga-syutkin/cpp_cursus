@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 15:42:07 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/26 20:40:55 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/27 06:17:03 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int main()
 	Dog *dogs = new Dog[ANIMAL_COUNT];
 
 	std::cout << SEPERATOR << std::endl;
-	std::cout << "CATS:" << std::endl;
+	std::cout << "CATS:";
 	for (int i = 0; i < ANIMAL_COUNT; i++)
 	{
-		std::cout << SEPERATOR << std::endl;
+		std::cout << std::endl << SEPERATOR << std::endl;
 		cats[i].makeSound();
 		std::cout << "Cat " << i + 1 << " ideas: " << std::endl;
 		for (int j = 0; j < 100; j++)
@@ -37,10 +37,10 @@ int main()
 		}
 	}
 	std::cout << std::endl << SEPERATOR << std::endl;
-	std::cout << "DOGS:" << std::endl;
+	std::cout << "DOGS:";
 	for (int i = 0; i < ANIMAL_COUNT; i++)
 	{
-		std::cout << SEPERATOR << std::endl;
+		std::cout << std::endl << SEPERATOR << std::endl;
 		dogs[i].makeSound();
 		std::cout << "Dog " << i + 1 << " ideas: " << std::endl;
 		for (int j = 0; j < 100; j++)
@@ -53,7 +53,8 @@ int main()
 	delete[] cats;
 	delete[] dogs;
 	std::cout << std::endl << SEPERATOR << std::endl;
-	std::cout << std::endl << SEPERATOR << std::endl;
+	std::cout << "Testing for shallow and/or deep copy:" << std::endl;
+	std::cout << SEPERATOR << std::endl;
 	{
 		Dog basic;
 		{

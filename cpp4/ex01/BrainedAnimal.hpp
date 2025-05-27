@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:25:46 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/26 21:02:32 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/27 06:14:14 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 class BrainedAnimal : public Animal
 {
 	private:										// Private members
-
+		Brain *brain_base;
 	protected:										// Protected members for inheritance
-		Brain *brain;
+	
 	public:
 		BrainedAnimal();                                		// Default constructor
 		BrainedAnimal(const BrainedAnimal &other);         		// Copy constructor
@@ -31,6 +31,7 @@ class BrainedAnimal : public Animal
 		BrainedAnimal(const std::string &type_); // Constructor with type
 		std::string getIdea(int index) const;
 		void initializeIdeas(int power);
+		Brain *getBrain() const; 
 };
 
 #endif // BRAINEDANIMAL_HPP

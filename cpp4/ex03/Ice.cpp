@@ -1,16 +1,12 @@
 /* ************************************************************************** */
+/*                                                                      42.fr */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 19:24:15 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 05:54:37 by vsyutkin         ###   ########.fr       */
+/*   Created: 2025/05/27 08:07:43 by vsyutkin                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Ice.hpp"
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @#######_#_##_######_____########____########______##########_#_##_######@ */
@@ -21,35 +17,32 @@
 /* @######\/|_|\/#####\_____|#(_)##\____/##(_)#|_|######(_)####\/|_|\/######@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 // Default constructor
-Dog::Dog() : BrainedAnimal("Dog")
+Ice::Ice() : AMateria("ice")
 {
-	this->brain = BrainedAnimal::getBrain(); // Initialize the brain pointer to the base class brain
-	initializeIdeas(10); // Initialize ideas with a power of 1
-	std::cout << TERMINAL_GREEN << "\tDefault constructor Dog called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tDefault constructor Ice called" << TERMINAL_RESET << std::endl;
 }
 
 // Copy constructor
-Dog::Dog(const Dog &other) : BrainedAnimal(other) // Call the base class copy constructor
+Ice::Ice(const Ice &other) : AMateria(other)
 {
-	this->brain = other.getBrain(); // Initialize the brain pointer to the copied brain
-	std::cout << TERMINAL_GREEN << "\tCopy constructor Dog called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tCopy constructor Ice called" << TERMINAL_RESET << std::endl;
 }
 
 // Assignment logic
-Dog &Dog::operator=(const Dog &other)
+Ice &Ice::operator=(const Ice &other)
 {
 	if (this != &other)
 	{
-		BrainedAnimal::operator=(other); // Call the base class assignment operator
-		std::cout << TERMINAL_GREEN << "\tAssignation operator Dog called" << TERMINAL_RESET << std::endl;
+		AMateria::operator=(other);
+		std::cout << TERMINAL_GREEN << "\tAssignation operator Ice called" << TERMINAL_RESET << std::endl;
 	}
-	return *this;
+	return (*this);
 }
 
 // Destructor
-Dog::~Dog()
+Ice::~Ice()
 {
-	std::cout << TERMINAL_GREEN << "\tDestructor Dog called" << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tDestructor Ice called" << TERMINAL_RESET << std::endl;
 }
 
 /******************************************************************************/
@@ -65,7 +58,13 @@ Dog::~Dog()
 /* ************************************************************************** */
 //	Public methods
 
-void Dog::makeSound() const
+AMateria *Ice::clone() const
 {
-	std::cout << TERMINAL_YELLOW << BARK << TERMINAL_RESET << std::endl;
+	std::cout << TERMINAL_GREEN << "\tClone method Ice called" << TERMINAL_RESET << std::endl;
+	return (new Ice(*this));
+}
+
+void Ice::use(ICharacter &target)
+{
+	std::cout << TERMINAL_BLUE << "* shoots an ice bolt at " << target.getName() << " *" << TERMINAL_RESET << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:24:04 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/26 20:53:53 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/27 05:52:39 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 // Default constructor
 Cat::Cat() : BrainedAnimal("Cat")
 {
+	this->brain = BrainedAnimal::getBrain(); // Initialize the brain pointer to the base class brain
 	initializeIdeas(1);
 	std::cout << TERMINAL_GREEN << "\tDefault constructor Cat called" << TERMINAL_RESET << std::endl;
 }
@@ -30,6 +31,7 @@ Cat::Cat() : BrainedAnimal("Cat")
 // Copy constructor
 Cat::Cat(const Cat &other) : BrainedAnimal(other) // Call the base class copy constructor
 {
+	this->brain = other.getBrain();
 	std::cout << TERMINAL_GREEN << "\tCopy constructor Cat called" << TERMINAL_RESET << std::endl;
 }
 

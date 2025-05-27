@@ -20,7 +20,7 @@
 class Dog : public BrainedAnimal
 {
 	private:										// Private members
-		Brain *brain;
+		// Brain *brain;
 	protected:										// Protected members for inheritance
 
 	public:
