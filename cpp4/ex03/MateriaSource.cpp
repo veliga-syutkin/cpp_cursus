@@ -88,7 +88,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 		return;
 	if (_indexMateria < 5)
 	{
-		_materia[_indexMateria] = m->clone(); // Clone the materia to store it
+		_materia[_indexMateria] = m; // Clone the materia to store it
 		_indexMateria++;
 	}
 	else

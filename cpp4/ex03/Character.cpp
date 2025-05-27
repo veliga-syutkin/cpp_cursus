@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:26:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 14:32:52 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:34:29 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void Character::equip(AMateria *m)
 	int _inventoryParser = _whereFreeSlot();
 	if (_inventoryParser < 0)
 		return ;
-	_inventory[_inventoryParser] = m->clone();	// Clone the materia to store it
+	_inventory[_inventoryParser] = m;	// Clone the materia to store it
 	std::cout << TERMINAL_YELLOW << _name << " equips " << m->getType() << " at slot " << _inventoryParser + 1 << "th" << TERMINAL_RESET << std::endl;
 }
 
