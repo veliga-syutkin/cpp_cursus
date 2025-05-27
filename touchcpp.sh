@@ -56,6 +56,9 @@ for NOM in "$@"; do
 #ifndef $INCLUDE_GUARD
 #define $INCLUDE_GUARD
 
+# include "../terminal_colors.hpp"
+# include <iostream>
+
 class $CLASS_NAME
 {
 	private:										// Private members
