@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:20:10 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 14:24:04 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:41:19 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ class ICharacter
 		virtual void equip(AMateria *m) = 0;
 		virtual void unequip(int idx) = 0;
 		virtual void use(int idx, ICharacter &target) = 0;
+
+		virtual AMateria *getMateriaPtr(int idx) const = 0; // Returns a pointer to the materia at index idx
 };
 
 #endif // ICHARACTER_HPP

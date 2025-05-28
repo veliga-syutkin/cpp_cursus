@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:26:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/27 15:34:29 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:06:24 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,11 @@ void Character::use(int idx, ICharacter &target)
 	if (idx < 0 || idx >= 4 || !_inventory[idx])
 		return ;
 	_inventory[idx]->use(target);
+}
+
+AMateria* Character::getMateriaPtr(int idx) const
+{
+	if (idx < 0 || idx >= 4)
+		return (NULL);
+	return (_inventory[idx]);
 }
