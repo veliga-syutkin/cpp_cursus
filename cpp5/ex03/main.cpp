@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:40:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 22:46:31 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/30 01:38:20 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "PresidentialPardonForm.hpp"
 # include "RobotomyRequestForm.hpp"
 # include "ShrubberyCreationForm.hpp"
+# include "Intern.hpp"
 
 void	default_bureaucrat_test()
 {
@@ -175,9 +176,32 @@ void	default_form_test()
 	}
 }
 
+void	default_intern_test()
+{
+	std::cout << TERMINAL_BG_BLUE << "Intern test:" << TERMINAL_RESET << std::endl;
+	try
+	{
+		Intern intern;
+		AForm *form1 = intern.makeForm("robotomy request", "Bender");
+		AForm *form2 = intern.makeForm("shrubbery creation", "Garden");
+		AForm *form3 = intern.makeForm("presidential pardon", "President");
+		std::cout << *form1 << std::endl;
+		std::cout << *form2 << std::endl;
+		std::cout << *form3 << std::endl;
+		delete form1;
+		delete form2;
+		delete form3;
+	}
+	catch (const ExceptionsCPP5 &e)
+	{
+		std::cerr << TERMINAL_RED << "Exception: " << e.what() << TERMINAL_RESET << std::endl;
+	}
+}
+
 int	main(void)
 {
 	std::srand(std::time(0));
 	default_bureaucrat_test();
 	default_form_test();
+	default_intern_test();
 }

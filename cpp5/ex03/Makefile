@@ -6,7 +6,7 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 09:52:01 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/05/29 22:48:09 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/05/30 01:43:06 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CLASSES =	Bureaucrat \
 			PresidentialPardonForm \
 			RobotomyRequestForm \
 			ShrubberyCreationForm \
+			Intern
 
 INTERFACES =	
 

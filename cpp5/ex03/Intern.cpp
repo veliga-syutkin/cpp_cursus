@@ -28,6 +28,10 @@ Intern::Intern()
 // Copy constructor
 Intern::Intern(const Intern &other)
 {
+	for (int i = 0; i < 3; ++i)
+	{
+		this->formCreate[i] = other.formCreate[i]; // Copy function pointers
+	}
 	std::cout << TERMINAL_GREEN << "\tCopy constructor Intern called" << TERMINAL_RESET << std::endl;
 }
 
@@ -36,6 +40,10 @@ Intern &Intern::operator=(const Intern &other)
 {
 	if (this != &other)
 	{
+		for (int i = 0; i < 3; ++i)
+		{
+			this->formCreate[i] = other.formCreate[i]; // Copy function pointers
+		}
 		std::cout << TERMINAL_GREEN << "\tAssignation operator Intern called" << TERMINAL_RESET << std::endl;
 	}
 	return (*this);

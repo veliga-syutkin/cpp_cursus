@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 22:15:26 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 22:28:11 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/30 01:39:06 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class AForm
 		AForm();                                	// Default constructor
 		AForm(const AForm &other);         	// Copy constructor
 		AForm &operator=(const AForm &other); // Assignment operator
-		~AForm();                                	// Destructor
+		virtual ~AForm();                                	// Destructor
 
 		AForm(const std::string &name, unsigned int gradeToSign, unsigned int gradeToExec);
 		const std::string &getName() const;      // Get the name of the AForm
