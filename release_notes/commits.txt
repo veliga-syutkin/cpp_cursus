@@ -104,3 +104,6 @@ fixed cpp4-3 (memory leaks + assignement)
 v35
 cpp5-00 done!
 
+v36
+cleaned objects
+
