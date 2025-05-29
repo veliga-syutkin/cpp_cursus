@@ -1,20 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Blank_makefile                                     :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 09:52:01 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/05/28 16:08:26 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/05/29 15:20:08 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CLASSES =	Bureaucrat \
+			ExceptionsCPP5 \
+
+INTERFACES =	
+
+# # **************************************************************************** #
+
 SRC =	main.cpp \
+		$(addsuffix .cpp, $(CLASSES))
+	
+HEADERS =	$(addsuffix .hpp, $(CLASSES)) \
+			$(addsuffix .hpp, $(INTERFACES))
 
-HEADERS =	
+# **************************************************************************** #
 
-NAME = 
+NAME = office
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
