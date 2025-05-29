@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:41:14 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 16:21:22 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:24:09 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #define EXCEPTIONSCPP5_HPP
 
 # include "../terminal_colors.hpp"
-# include <exception>
 # include <iostream>
+# include <exception>
 
 class ExceptionsCPP5 : public std::exception
 {
 	private:										// Private members
-		std::string	_msg;
+
 	protected:										// Protected members for inheritance
+		std::string	_msg;
 
 	public:
 		// ExceptionsCPP5();                                	// Default constructor
@@ -35,16 +36,53 @@ class ExceptionsCPP5 : public std::exception
 		// c++11: `virtual const char* what() const noexcept override = 0;`
 };
 
-class	BureaucratGradeTooHighException : public ExceptionsCPP5
+class	BureaucratException : public ExceptionsCPP5
+{
+	public:
+		BureaucratException(const std::string &msg) : ExceptionsCPP5(msg) {}; // Constructor with message
+};
+
+class	BureaucratGradeTooHighException : public BureaucratException
 {
 	public:
 		BureaucratGradeTooHighException();
 };
 
-class	BureaucratGradeTooLowException : public ExceptionsCPP5
+class	BureaucratGradeTooLowException : public BureaucratException
 {
 	public:
 		BureaucratGradeTooLowException();
 };
+
+class	FormException : public ExceptionsCPP5
+{
+	public:
+		FormException(const std::string &msg) : ExceptionsCPP5(msg) {}; // Constructor with message
+};
+
+class	FormSignGradeTooLowException : public FormException
+{
+	public:
+		FormSignGradeTooLowException();
+};
+
+// class	FormExecGradeTooLowException : public FormException
+// {
+// 	public:
+// 		FormExecGradeTooLowException();
+// };
+
+class	FormCreateGradeTooLowException : public FormException
+{
+	public:
+		FormCreateGradeTooLowException();
+};
+
+class	FormCreateGradeTooHighException : public FormException
+{
+	public:
+		FormCreateGradeTooHighException();
+};
+
 
 #endif // EXCEPTIONSCPP5_HPP
