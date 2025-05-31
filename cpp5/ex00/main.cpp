@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:40:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 15:43:02 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/31 13:14:31 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(void)
 		{
 			Bureaucrat invalidGrade("Invalid Grade Bureaucrat", 0); // Invalid grade, should throw an exception
 		}
-		catch(const BureaucratGradeTooLowException & e)
+		catch(const BureaucratGradeTooLowException & e) // Handling exceptions that are out of scope of this catch!
 		{
 			std::cout << "exception caught: Too High Grade Bureaucrat" << std::endl;
 			std::cerr << e.what() << '\n';

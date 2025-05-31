@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:40:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 22:46:31 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/31 13:39:15 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,8 @@ void	default_form_test()
 			std::cout << robotomyForm << std::endl;
 			std::cout << shrubberyForm << std::endl;
 			seventy.executeForm(shrubberyForm);
+			CEO.executeForm(presidentialForm); // Should succeed
+			CEO.executeForm(robotomyForm); // Should succeed
 			seventy.executeForm(robotomyForm); // Should fail, no enough grade
 		}
 		catch(const std::exception& e)
