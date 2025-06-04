@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:55:32 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 16:08:19 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/04 10:15:22 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define MAX_CLASSIFIED_GRADE 149
 
 class Form; // Forward declaration of Form class
+
+class BureaucratException; // Forward declaration of BureaucratException class
 
 class Bureaucrat
 {

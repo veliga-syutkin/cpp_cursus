@@ -10,9 +10,12 @@
 #define FORM_HPP
 
 # include "Bureaucrat.hpp"
+# include "ExceptionsCPP5.hpp"
 
 # define SIGNED_TRUE "Signed :D"
 # define SIGNED_FALSE "Not signed :c"
+
+class FormException; // Forward declaration of FormException class
 
 class Bureaucrat; // Forward declaration of Bureaucrat class
 

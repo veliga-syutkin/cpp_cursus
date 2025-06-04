@@ -1,1 +1,1 @@
-Moved away functions definitions in cpp5!
+fixed compilation errors

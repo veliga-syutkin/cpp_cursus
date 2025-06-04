@@ -135,3 +135,6 @@ updateUpdated git_pull (lacked  command)
 v44
 Moved away functions definitions in cpp5!
 
+v45
+fixed compilation errors
+
