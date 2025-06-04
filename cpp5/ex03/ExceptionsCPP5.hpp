@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:41:14 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 22:03:10 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/04 10:08:02 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ExceptionsCPP5 : public std::exception
 		// ExceptionsCPP5();                                	// Default constructor
 		// ExceptionsCPP5(const ExceptionsCPP5 &other);         	// Copy constructor
 		// ExceptionsCPP5 &operator=(const ExceptionsCPP5 &other); // Ommitted in exception class
-		~ExceptionsCPP5() throw () {};                                		// Destructor
+		~ExceptionsCPP5() throw ();                                		// Destructor
 
 		ExceptionsCPP5(const std::string &msg);                                	// Default constructor
 
@@ -39,7 +39,7 @@ class ExceptionsCPP5 : public std::exception
 class	BureaucratException : public ExceptionsCPP5
 {
 	public:
-		BureaucratException(const std::string &msg) : ExceptionsCPP5(msg) {}; // Constructor with message
+		BureaucratException(const std::string &msg); // Constructor with message
 };
 
 class	BureaucratGradeTooHighException : public BureaucratException
@@ -57,7 +57,7 @@ class	BureaucratGradeTooLowException : public BureaucratException
 class	FormException : public ExceptionsCPP5
 {
 	public:
-		FormException(const std::string &msg) : ExceptionsCPP5(msg) {}; // Constructor with message
+		FormException(const std::string &msg); // Constructor with message
 };
 
 class	FormSignGradeTooLowException : public FormException

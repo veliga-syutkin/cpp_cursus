@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:41:08 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/29 16:26:09 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/04 10:04:27 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,21 @@ const char *ExceptionsCPP5::what() const throw()
 	return (_msg.c_str());
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
+BureaucratException::BureaucratException(const std::string &msg) : ExceptionsCPP5(msg) {};
+
+////////////////////////////////////////////////////////////////////////////////
+
 BureaucratGradeTooHighException::BureaucratGradeTooHighException() : BureaucratException("Bureaucrat grade too high") {};
 
 BureaucratGradeTooLowException::BureaucratGradeTooLowException() : BureaucratException("Bureaucrat grade too low") {};
+
+////////////////////////////////////////////////////////////////////////////////
+
+FormException::FormException(const std::string &msg) : ExceptionsCPP5(msg) {};
+
+////////////////////////////////////////////////////////////////////////////////
 
 FormCreateGradeTooHighException::FormCreateGradeTooHighException() 
 	: FormException("Form creation grade is too high") {};
