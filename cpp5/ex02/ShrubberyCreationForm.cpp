@@ -77,7 +77,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	if (!ofs.is_open())
 		throw std::runtime_error("Failed to open file for writing");
 	std::srand(std::time(0));
-	for (int i; i < (rand() % 10); i++)
+	for (int i = 0; i < (rand() % 10); i++)
 	{
 		ofs << "        _-_\n"
 			<< "     /~~   ~~\\\n"

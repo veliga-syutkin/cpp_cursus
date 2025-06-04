@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:40:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/05/30 01:38:20 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/05/31 13:51:58 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,12 +185,15 @@ void	default_intern_test()
 		AForm *form1 = intern.makeForm("robotomy request", "Bender");
 		AForm *form2 = intern.makeForm("shrubbery creation", "Garden");
 		AForm *form3 = intern.makeForm("presidential pardon", "President");
+		AForm *form4 = intern.makeForm("unknown form", "Unknown"); // Should return nullptr or throw an exception
+		(void)form4; // Suppress unused variable warning
 		std::cout << *form1 << std::endl;
 		std::cout << *form2 << std::endl;
 		std::cout << *form3 << std::endl;
 		delete form1;
 		delete form2;
 		delete form3;
+		
 	}
 	catch (const ExceptionsCPP5 &e)
 	{

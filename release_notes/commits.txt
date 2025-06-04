@@ -120,5 +120,12 @@ v40
 cpp5 fully done!
 
 v41
+<<<<<<< HEAD
 started cpp6, cpp5 needs clean up in headers
+=======
+Improved tests (a bit, with aalferov)
+>>>>>>> refs/remotes/origin/main
+
+v42
+started cpp6 + need cleanup headers cpp5
 
