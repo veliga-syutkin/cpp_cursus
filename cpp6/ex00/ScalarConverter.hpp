@@ -10,28 +10,43 @@
 #define SCALARCONVERTER_HPP
 
 # include "../terminal_colors.hpp"
+# include <string>
 # include <iostream>
+# include <iomanip>
 # include <climits>
 # include <ostream>
+# include <cmath>
+# include <exception>
 
-# define STR_ALLOWED "0123456789.-+fFdD"
+# define STR_ALLOWED "0123456789.-+fF"
 
 class ScalarConverter {
 	private:
+		// static char		_char;		// deprecated because _int can be used instead
+		static long		_int;
+		// static float	_float;		// deprecated because _double can be used instead
+		static double	_double;
+
+		static bool		_overflowedInt;
+
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter &other);
 		ScalarConverter &operator=(ScalarConverter &other);
 		~ScalarConverter(void);
 
-		bool	isFAtEnd(const std::string &str);
-		bool	isDotBetweenDigits(const std::string &str);
+		static bool	isFAtEnd(const std::string &str);
+		static bool	isDotBetweenDigits(const std::string &str);
 		// bool	isValidChar(const std::string &str);
-		bool	isValidString(const std::string &str);
-		bool	isSpecial(const std::string &str);
-		int		dotCounter(const std::string &str);
+		static bool	isValidString(const std::string &str);
+		static bool	isSpecial(const std::string &str);
+		static int	dotCounter(const std::string &str);
+		static bool	isSingleChar(const std::string &str);
+		static bool isPrintable(const std::string &str);
+		static void	parser(const std::string &value);
 
+		static void toDisplay(const std::string &character, const std::string &integer, const std::string &singleFloat, const std::string &doubleFloat);
 		// static type	getType(const std::string &value);
-		static void display(const char character, const int integer, const float singleFloat, const double doubleFloat);
+		static void display();
 	
 	protected:
 
@@ -39,6 +54,7 @@ class ScalarConverter {
 		static void convert(const std::string &value);
 };
 
+// Generic exception for ScalarConverter
 class	ScalarConverterException : public std::exception
 {
 	private:
@@ -51,16 +67,25 @@ class	ScalarConverterException : public std::exception
 		const char* what() const throw();
 };
 
-class	ScalarConverterOverflow : public ScalarConverterException
-{
-	public:
-		ScalarConverterOverflow(const std::string &message);
-};
+// String is overflowing after conversion
+// class	ScalarConverterOverflow : public ScalarConverterException
+// {
+// 	public:
+// 		ScalarConverterOverflow(const std::string &message);
+// };
+// 
+// // Exception when the string cannot be converted (like, "Hello World!")
+// class	ScalarConverterStringException : public ScalarConverterException
+// {
+// 	public:
+// 		ScalarConverterStringException(const std::string &message);
+// };
 
+// Exception for the undefined string errors
 class	ScalarConverterUndefined : public ScalarConverterException
 {
 	public:
 		ScalarConverterUndefined(const std::string &message);
 };
 
-#endif // SCALARCONVERTER_HPP
+#endif

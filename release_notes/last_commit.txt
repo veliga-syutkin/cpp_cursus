@@ -1,1 +1,1 @@
-fixed compilation errors
+Almost finiched cpp6-0
