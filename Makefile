@@ -6,7 +6,7 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 00:45:14 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/05/30 01:37:03 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/06/04 10:00:56 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -162,7 +162,7 @@ version_update:
 	@echo "Creating new release note"
 
 # DO NOT USE
-git_auto:	fclean commit git_add git_status git_commit git_gitpush
+git_auto:	fclean git_pull commit git_add git_status git_commit git_gitpush
 
 git_msg1:
 	@echo "\n\tPushing without norminette...\n"
@@ -183,6 +183,9 @@ git_commit:
 
 git_gitpush:
 	git push
+
+git_pull:
+	git pull
 #																			   #
 # ############################################################################ #
 
