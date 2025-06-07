@@ -1,22 +1,29 @@
 /* ************************************************************************** */
-/*                                                                      42.fr */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*   Created: 2025/06/03 12:21:05 by vsyutkin                                 */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/07 16:34:39 by vsyutkin          #+#    #+#             */
+/*   Updated: 2025/06/07 16:34:42 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
 # include "../terminal_colors.hpp"
-# include <string>
+# include <climits>
+# include <cmath>
+# include <cstdlib>
+# include <cerrno>
+# include <exception>
 # include <iostream>
 # include <iomanip>
-# include <climits>
 # include <ostream>
-# include <cmath>
-# include <exception>
+# include <string>
+# include <sstream>
 
 # define STR_ALLOWED "0123456789.-+fF"
 
@@ -28,26 +35,28 @@ class ScalarConverter {
 		static double	_double;
 
 		static bool		_overflowedInt;
+		static bool		_isSpecial;
 
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter &other);
 		ScalarConverter &operator=(ScalarConverter &other);
 		~ScalarConverter(void);
 
-		static bool	isFAtEnd(const std::string &str);
-		static bool	isDotBetweenDigits(const std::string &str);
-		// bool	isValidChar(const std::string &str);
+		static bool	isFormatted(const std::string &str);
+		static int	ft_strtoi(const std::string &value);
+		static bool isStrPrintable(const std::string &str);
+		static bool	isSingleCharAndNotNum(const std::string &str);
+		static void	isSpecial(const std::string &str);
 		static bool	isValidString(const std::string &str);
-		static bool	isSpecial(const std::string &str);
-		static int	dotCounter(const std::string &str);
-		static bool	isSingleChar(const std::string &str);
-		static bool isPrintable(const std::string &str);
-		static void	parser(const std::string &value);
 
-		static void toDisplay(const std::string &character, const std::string &integer, const std::string &singleFloat, const std::string &doubleFloat);
-		// static type	getType(const std::string &value);
+		static void displayChar();
+		static void displayInt();
+		static void displayFloat();
+		static void displayDouble();
+
+		static void	parser(const std::string &value);
 		static void display();
-	
+
 	protected:
 
 	public:

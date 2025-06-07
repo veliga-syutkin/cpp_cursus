@@ -1,17 +1,22 @@
 /* ************************************************************************** */
-/*                                                                      42.fr */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*   Created: 2025/06/03 12:21:05 by vsyutkin                                 */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/07 16:34:48 by vsyutkin          #+#    #+#             */
+/*   Updated: 2025/06/07 16:34:51 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-// char ScalarConverter::_char = 0;
-int ScalarConverter::_int = 0;
+// Static member initialization
+long ScalarConverter::_int = 0;
 double ScalarConverter::_double = 0.0;
 bool ScalarConverter::_overflowedInt = false;
+bool ScalarConverter::_isSpecial = false;
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @#######_#_##_######_____########____########______##########_#_##_######@ */
@@ -57,74 +62,87 @@ ScalarConverter::~ScalarConverter()
 /******************************************************************************/
 //	Private methods
 
-// Check if the string ends with 'f' or 'F'
-bool	ScalarConverter::isFAtEnd(const std::string &str)
+// Converts from the string to integer with checks for overflows of limits of int.
+int	ScalarConverter::ft_strtoi(const std::string &value)
 {
-	// if (str.back() == 'f' || str.back() == 'F')
-    if (!str.empty() && (str[str.length() - 1] == 'f' || str[str.length() - 1] == 'F'))
-		return (true);
-	return (false);
+	long	integer;
+
+	errno = 0; // Reset errno before conversion
+	integer = static_cast<long>(strtol(value.c_str(), NULL, 10));
+	if (errno == ERANGE || integer > INT_MAX || integer < INT_MIN) // errno checks for long_overflow
+	{
+		_overflowedInt = true; // Set overflowedInt to true if the conversion fails or overflows
+		integer = 0; // Reset _int to avoid using an invalid value
+	}
+	errno = 0; // Reset errno after conversion
+	return (static_cast<int>(integer));
 }
 
-bool	ScalarConverter::isDotBetweenDigits(const std::string &str)
+/* Checks if: 
+1. No more than one dot in the string
+2. No more than one alpha character (f or F) in the string AFTER the dot
+Returns true if the string is formatted correctly, false otherwise.
+ */
+bool	ScalarConverter::isFormatted(const std::string &str)
 {
-	// Check if the string contains a dot between digits
-	size_t dotPos = str.find('.');
-	if (dotPos != std::string::npos)
-		return (true);
-	return (false);
-}
-
-int	ScalarConverter::dotCounter(const std::string &str)
-{
-	// Count the number of dots in the string
-	int count = 0;
+	int dotCount = 0;
+	int	alphaCount = 0;
 	for (size_t i = 0; i < str.length(); ++i)
 	{
 		if (str[i] == '.')
-		count++;
+			dotCount++;
+		else if (str[i] == 'f' || str[i] == 'F')
+			alphaCount++;
+		if (dotCount < alphaCount)
+			return (false); // If there's a 'f' before a '.', it's invalid
 	}
-	return (count);
+	if (dotCount > 1 || alphaCount > 1)
+		return (false);
+	return (true);
 }
 
 	/* * */
 
-// Checks if the string isn't empty, contains only valid characters, and has no more than one dot.
+// Checks if the string isn't empty, contains only valid characters, and has no more than one .
 // Returns true if the string is valid, false otherwise.
 bool	ScalarConverter::isValidString(const std::string &str)
 {
 	const std::string allowed = STR_ALLOWED;
 
-	if (str.empty())
+	if (_isSpecial)
+		return (true); // If it's a special value, we don't need to validate the string further
+	if (str.empty() || !isStrPrintable(str))
 		return (false);
-	
+	if (str.length() == 1 && isSingleCharAndNotNum(str)) // If it's a single character, it's valid
+		return (true);
 	for (size_t i = 0; i < str.length(); ++i)
 	{
 		if (allowed.find(str[i]) == std::string::npos) //white list of characters
 			return false;
 	}
-	if (dotCounter(str) > 1)
+	if (!isFormatted(str))
 		return (false);
 	return (true);
 }
 
 // Check if the string is a special value like "inf", "-inf", "nan", etc.
 // Returns true if the string is a special value, false otherwise.
-// -----
-// Returns 1 for "-inf(f)", 2 for "nan(f)", 3 for "+inf(f)", and 0 for other cases.
-bool ScalarConverter::isSpecial(const std::string &str)
+void ScalarConverter::isSpecial(const std::string &str)
 {
-	if (str == "inff" || str == "+inff" || str == "-inff" || str == "nanf")
-		return (true);
-	if (str == "inf" || str == "+inf" || str == "-inf" || str == "nan")
-		return (true);
-	return (false);
+	if (str == "inff" || str == "+inff" || str == "-inff" || str == "nanf"
+		|| str == "inf" || str == "+inf" || str == "-inf" || str == "nan")
+	{
+		_isSpecial = true;
+		_overflowedInt = true; // Set overflowedInt to true for special values
+	}
+	else
+		_isSpecial = false;
 }
 
 // Check if the string is printable
 // Returns true if all characters are printable
 // Returns false if any character is not printable
-bool	ScalarConverter::isPrintable(const std::string &str)
+bool	ScalarConverter::isStrPrintable(const std::string &str)
 {
 	int cursor = 0;
 
@@ -137,65 +155,78 @@ bool	ScalarConverter::isPrintable(const std::string &str)
 	return (true);
 }
 
-bool ScalarConverter::isSingleChar(const std::string &str)
+// Check if the string is a single character AND not a digit
+bool ScalarConverter::isSingleCharAndNotNum(const std::string &str)
 {
-	if (str.length() == 1 && isPrintable(str) && !isdigit(str[0]))
+	if (str.length() == 1 && !isdigit(str[0]))
 		return (true);
 	return (false);
 }
 
-	/* * */
+/* ************************************************************************** */
 
-// Output in the terminal
-void	ScalarConverter::toDisplay(const std::string &character, const std::string &integer, const std::string &singleFloat, const std::string &doubleFloat)
+void	ScalarConverter::parser(const std::string &value)
 {
-	std::cout << "char: " << character << std::endl;
-	std::cout << "int: " << integer << std::endl;
-	std::cout << "float: " << singleFloat << std::endl;
-	std::cout << "double: " << doubleFloat << std::endl;
+	isSpecial(value); // Check if the string is a special value and set _isSpecial accordingly
+	if (!isValidString(value))
+		throw ScalarConverterUndefined("Invalid input string: " + value);
+	if (isSingleCharAndNotNum(value))
+	{
+		_int = static_cast<int>(value[0]);		// Non-implecit conversion from char to int. Can be implecit.
+		_double = static_cast<double>(_int);
+		return ;
+	}
+	if (!_isSpecial)		// if the string is NOT a special value
+		_int = ft_strtoi(value);
+	_double = strtod(value.c_str(), NULL); // Convert to double
 }
 
+	/* * */
+
 void	ScalarConverter::display()
+{
+	displayChar();
+	displayInt();
+	displayFloat();
+	displayDouble();
+}
+
+void	ScalarConverter::displayChar()
 {
 	if (_overflowedInt)
 	{
 		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: overflow" << std::endl;
-	}
-	else
-	{
-		if (iswprint(_int) && _int >= 0 && _int <= 127)
-			std::cout << "char: '" << static_cast<char>(_int) << "'" << std::endl;
-		else
-			std::cout << "char: Non printable" << std::endl;
-		std::cout << "int: " << _int << std::endl;
-	}
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(_double) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << _double << std::endl;
-}
-
-// void	ScalarConverter::display(const char character)
-// {
-	
-// }
-
-void	ScalarConverter::parser(const std::string &value)
-{
-
-	if (isSingleChar(value))
-	{
-		_int = static_cast<int>(value[0]);
-		_double = static_cast<double>(_int);
 		return ;
 	}
-	bool	special = isSpecial(value);
-	if (!isValidString(value) && !special)
-		throw ScalarConverterUndefined("Invalid input string: " + value);
-	if (special)		// if the string is a special value
-		_overflowedInt = true;	// true = 1
+	if (iswprint(_int))
+		std::cout << "char: '" << static_cast<char>(_int) << "'" << std::endl;
+	else if (_int >= 0 && _int <= 127)
+		std::cout << "char: Non printable" << std::endl;
 	else
-		_int = static_cast<int>(strtol(value.c_str(), NULL, 10));
-	_double = strtod(value.c_str(), NULL); // Convert to double
+		std::cout << "char: impossible" << std::endl;
+}
+
+void	ScalarConverter::displayInt()
+{
+	if (_overflowedInt)
+	{
+		if (_isSpecial)
+			std::cout << "int: impossible" << std::endl;
+		else
+			std::cout << "int: overflow" << std::endl;
+	}
+	else
+		std::cout << "int: " << _int << std::endl;
+}
+
+void	ScalarConverter::displayFloat()
+{
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(_double) << "f" << std::endl;
+}
+
+void	ScalarConverter::displayDouble()
+{
+	std::cout << "double: " << std::fixed << std::setprecision(1) << _double << std::endl;
 }
 
 /* ************************************************************************** */
@@ -208,6 +239,8 @@ void	ScalarConverter::convert(const std::string &value)
 {
 	parser(value);
 	display();
+	_overflowedInt = false; // Reset the overflow flag for the next conversion
+	_isSpecial = false; // Reset the special flag for the next conversion
 }
 
 /* ************************************************************************** */

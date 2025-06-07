@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 16:03:58 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/04 16:26:32 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/07 15:05:25 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
 	{
 		if (argc > 2)
-			std::cout << "Argument " << i << ": ";
+			std::cout << "Argument " << i << ": " << std::endl;
 		try
 		{
 			ScalarConverter::convert(argv[i]);
@@ -26,5 +26,6 @@ int	main(int argc, char **argv)
 		{
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
+		std::cout << std::endl;
 	}
 }
