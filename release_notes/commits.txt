@@ -156,3 +156,6 @@ Automated compilation of CPPs.
 v51
 Examined if in cpp6-2 derived classes needed their own files (they don't).
 
+v52
+cpp7-0 done
+
