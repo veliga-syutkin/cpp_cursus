@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:34:48 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/07 16:34:51 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/07 21:00:56 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,13 @@ bool	ScalarConverter::isFormatted(const std::string &str)
 	{
 		if (str[i] == '.')
 			dotCount++;
-		else if (str[i] == 'f' || str[i] == 'F')
+		if (str[i] == 'f' || str[i] == 'F')
 			alphaCount++;
+		// std::cout << TERMINAL_RED << "is Formatted: " << str[i] << " dotCount: " << dotCount << " alphaCount: " << alphaCount << TERMINAL_RESET << std::endl;
+		if (alphaCount > 1 && isdigit(str[i]))
+			return (false); // If there's more than one 'f' and a digit, it's invalid
+		if (alphaCount != 0 && str.length() > i + 1)
+			return (false);
 		if (dotCount < alphaCount)
 			return (false); // If there's a 'f' before a '.', it's invalid
 	}

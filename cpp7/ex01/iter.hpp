@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/07 18:22:36 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/07 18:35:08 by vsyutkin         ###   ########.fr       */
+/*   Created: 2025/06/07 18:31:17 by vsyutkin          #+#    #+#             */
+/*   Updated: 2025/06/07 18:38:42 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once // replace #ifndef/#define/#endif with #pragma once
 
-template <typename T>
-void swap(T &a, T &b) 
-{
-	T t = a;
-	a = b;
-	b = t;
-}
+#include <cstdlib> // for size_t
 
 template <typename T>
-T min(T &a, T &b)
+void iter(T *array, size_t length, void (*func)(T &))
 {
-	return (a > b ? b : a); // (condition ? true_value : false_value)
+	for (size_t i = 0; i < length; ++i)
+	{
+		func(array[i]);
+	}
 }
 
+// Overload function for const arrays
 template <typename T>
-T max(T &a, T &b)
+void iter(const T *array, const size_t length, void (*func)(const T &))
 {
-	return (a < b ? b : a); // (condition ? true_value : false_value)
+	for (size_t i = 0; i < length; ++i)
+	{
+		func(array[i]);
+	}
 }

@@ -1,30 +1,20 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Blank_makefile                                     :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 09:52:01 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/06/07 21:21:33 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/06/07 20:34:17 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLASSES =	
-
-INTERFACES =	
-
-# # **************************************************************************** #
-
 SRC =	main.cpp \
-		$(addsuffix .cpp, $(CLASSES))
-	
-HEADERS =	$(addsuffix .hpp, $(CLASSES)) \
-			$(addsuffix .hpp, $(INTERFACES))
 
-# **************************************************************************** #
+HEADERS =	iter.hpp
 
-NAME = 
+NAME = iter
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

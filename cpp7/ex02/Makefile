@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Blank_makefile                                     :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 09:52:01 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/06/07 21:21:33 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/06/07 21:24:37 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ SRC =	main.cpp \
 		$(addsuffix .cpp, $(CLASSES))
 	
 HEADERS =	$(addsuffix .hpp, $(CLASSES)) \
-			$(addsuffix .hpp, $(INTERFACES))
+			$(addsuffix .hpp, $(INTERFACES)) \
+			Array.hpp
 
 # **************************************************************************** #
 
-NAME = 
+NAME = arrays
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

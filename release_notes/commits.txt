@@ -159,3 +159,6 @@ Examined if in cpp6-2 derived classes needed their own files (they don't).
 v52
 cpp7-0 done
 
+v53
+Almost finished cpp7-2: needs more elaborate tests, ig.
+
