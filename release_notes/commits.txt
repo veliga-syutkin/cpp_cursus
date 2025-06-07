@@ -150,3 +150,6 @@ ccpp6-1 done
 v49
 finishefinished cpp6.
 
+v50
+Automated compilation of CPPs.
+
