@@ -1,1 +1,1 @@
-Automated compilation of CPPs.
+Examined if in cpp6-2 derived classes needed their own files (they don't).

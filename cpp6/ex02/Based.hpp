@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:59:40 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/07 17:36:36 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:05:11 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ class Based
 		virtual ~Based();
 		std::string	msg();
 };
+
+// For the reasons of readability, the classes A, B, and C are defined in the same file.
 
 class	A : public Based
 {
