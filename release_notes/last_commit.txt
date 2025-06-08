@@ -1,1 +1,1 @@
-cpp7 done
+cpp8-0 + order of functions cpp6-00
