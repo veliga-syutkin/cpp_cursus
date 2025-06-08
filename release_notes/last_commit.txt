@@ -1,1 +1,1 @@
-Almost finished cpp7-2: needs more elaborate tests, ig.
+cpp7 done

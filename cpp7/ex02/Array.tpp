@@ -1,8 +1,12 @@
 /* ************************************************************************** */
-/*                                                                      42.fr */
-/*   By: vsyutkin <vsyutkin@student.42mulhouse.fr>                            */
 /*                                                                            */
-/*   Created: 2025/06/07 20:37:32 by vsyutkin                                 */
+/*                                                        :::      ::::::::   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/08 14:40:50 by vsyutkin          #+#    #+#             */
+/*   Updated: 2025/06/08 14:40:52 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +33,19 @@ Array<T>::Array(const Array &other)
 {
 	if (this != &other)
 	{
-		_size = other._size;
-		if (_size == 0)
+		this->_size = other._size;
+		if (this->_size == 0)
 		{
-			_data = NULL;
+			this->_data = NULL;
 		}
 		else
 		{
-			_data = new T[_size];
+			this->_data = new T[_size];
 			for (std::size_t i = 0; i < _size; ++i)
 			{
-				_data[i] = other._data[i];
+				this->_data[i] = other._data[i];
 			}
 		}
-	}
-	else
-	{
-		_data = NULL;
 	}
 	std::cout << TERMINAL_GREEN << "\tCopy constructor Array called" << TERMINAL_RESET << std::endl;
 }
@@ -56,21 +56,21 @@ Array<T> &Array<T>::operator=(const Array &other)
 {
 	if (this != &other)
 	{
-		if (_data != NULL)
+		if (this->_data != NULL)
 		{
 			delete[] _data;
 		}
-		_size = other._size;
-		if (_size == 0)
+		this->_size = other._size;
+		if (this->_size == 0)
 		{
-			_data = NULL;
+			this->_data = NULL;
 		}
 		else
 		{
-			_data = new T[_size];
+			this->_data = new T[_size];
 			for (std::size_t i = 0; i < _size; ++i)
 			{
-				_data[i] = other._data[i];
+				this->_data[i] = other._data[i];
 			}
 		}
 		std::cout << TERMINAL_GREEN << "\tAssignation operator Array called" << TERMINAL_RESET << std::endl;
@@ -82,12 +82,12 @@ Array<T> &Array<T>::operator=(const Array &other)
 template <typename T>
 Array<T>::~Array()
 {
-	if (_data != NULL)
+	if (this->_data != NULL)
 	{
-		delete[] _data;
-		_data = NULL;
+		delete[] this->_data;
+		this->_data = NULL;
 	}
-	_size = 0;
+	this->_size = 0;
 	std::cout << TERMINAL_GREEN << "\tDestructor Array called" << TERMINAL_RESET << std::endl;
 }
 

@@ -162,3 +162,6 @@ cpp7-0 done
 v53
 Almost finished cpp7-2: needs more elaborate tests, ig.
 
+v54
+cpp7 done
+
