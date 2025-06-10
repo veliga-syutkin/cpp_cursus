@@ -1,1 +1,1 @@
-cpp7-1 try-catch throwing further in iter
+Fixed catches in iter (cpp7-1), now one catches std::exception, the other catches any exception

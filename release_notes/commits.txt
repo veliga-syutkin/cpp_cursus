@@ -195,3 +195,6 @@ Added try-catch on iter (cpp7-1) (not the panacea but helpfull if the passed obj
 v64
 cpp7-1 try-catch throwing further in iter
 
+v65
+Fixed catches in iter (cpp7-1), now one catches std::exception, the other catches any exception
+
