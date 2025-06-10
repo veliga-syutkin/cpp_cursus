@@ -1,1 +1,1 @@
-Makefile for cpp8
+Added cpp8 to automation script of cpp_cursus

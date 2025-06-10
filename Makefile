@@ -6,7 +6,7 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/01 00:45:14 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/06/07 21:25:24 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/06/10 10:05:12 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CPP04_DIR = ./cpp4/
 CPP05_DIR = ./cpp5/
 CPP06_DIR = ./cpp6/
 CPP07_DIR = ./cpp7/
-# CPP08_DIR = ./cpp8/
+CPP08_DIR = ./cpp8/
 # CPP09_DIR = ./cpp9/
 
 DIR_CPP = $(CPP00_DIR) $(CPP01_DIR) $(CPP02_DIR) $(CPP03_DIR) $(CPP04_DIR) \
@@ -38,7 +38,7 @@ all: $(MAKEFILES)
 	 @$(MAKE) -C $(CPP05_DIR)
 	 @$(MAKE) -C $(CPP06_DIR)
 	 @$(MAKE) -C $(CPP07_DIR)
-#	 @$(MAKE) -C $(CPP08_DIR)
+	 @$(MAKE) -C $(CPP08_DIR)
 #	 @$(MAKE) -C $(CPP09_DIR)
 	@echo "All modules compiled successfully."
 
@@ -51,7 +51,7 @@ clean:
 	@$(MAKE) -C $(CPP05_DIR) clean
 	@$(MAKE) -C $(CPP06_DIR) clean
 	@$(MAKE) -C $(CPP07_DIR) clean
-#	@$(MAKE) -C $(CPP08_DIR) clean
+	@$(MAKE) -C $(CPP08_DIR) clean
 #	@$(MAKE) -C $(CPP09_DIR) clean
 	@echo "Cleaned all modules."
 
@@ -64,7 +64,7 @@ fclean:
 	@$(MAKE) -C $(CPP05_DIR) fclean
 	@$(MAKE) -C $(CPP06_DIR) fclean
 	@$(MAKE) -C $(CPP07_DIR) fclean
-#	@$(MAKE) -C $(CPP08_DIR) fclean
+	@$(MAKE) -C $(CPP08_DIR) fclean
 #	@$(MAKE) -C $(CPP09_DIR) fclean
 	rm -rf copy_constructor
 	@echo "All modules full cleaned."
