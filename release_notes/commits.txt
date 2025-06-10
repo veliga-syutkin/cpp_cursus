@@ -180,6 +180,12 @@ Makefile for cpp8
 v59
 Added cpp8 to automation script of cpp_cursus
 
+v60
+cpp7 revision by jdutschk (1 more test for ex01 and good practice when calling template function: precise the type of T when calling it (`function_template<type1, type2, ..., typeN>)
+
 v61
 See release notes
+
+v62
+release notes fix
 
