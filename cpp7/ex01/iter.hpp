@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:31:17 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/10 13:01:46 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/10 13:02:48 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void iter(T *array, size_t length, void (*func)(T &))
 	catch (... &e)
 	{
 		std::cerr << RED << "An error occurred while iterating over the array: " << e.what() << RESET << std::endl;
+		throw e; // Re-throw the exception to allow further handling if needed
 	}
 }
 
@@ -45,5 +46,6 @@ void iter(const T *array, const size_t length, void (*func)(const T &))
 	catch (... &e)
 	{
 		std::cerr << RED << "An error occurred while iterating over the array: " << e.what() << RESET << std::endl;
+		throw e; // Re-throw the exception to allow further handling if needed
 	}
 }
