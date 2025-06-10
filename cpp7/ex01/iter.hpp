@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:31:17 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/10 10:51:37 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/10 13:01:46 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@
 template <typename T>
 void iter(T *array, size_t length, void (*func)(T &))
 {
-	for (size_t i = 0; i < length; ++i)
+	try										// Catch block to handle exceptions if the function throws
 	{
-		func(array[i]);
+		for (size_t i = 0; i < length; ++i)
+		{
+			func(array[i]);
+		}
+	}
+	catch (... &e)
+	{
+		std::cerr << RED << "An error occurred while iterating over the array: " << e.what() << RESET << std::endl;
 	}
 }
 
@@ -28,8 +35,15 @@ void iter(T *array, size_t length, void (*func)(T &))
 template <typename T>
 void iter(const T *array, const size_t length, void (*func)(const T &))
 {
-	for (size_t i = 0; i < length; ++i)
+	try										// Catch block to handle exceptions if the function throws
 	{
-		func(array[i]);
+		for (size_t i = 0; i < length; ++i)
+		{
+			func(array[i]);
+		}
+	}
+	catch (... &e)
+	{
+		std::cerr << RED << "An error occurred while iterating over the array: " << e.what() << RESET << std::endl;
 	}
 }

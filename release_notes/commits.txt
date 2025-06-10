@@ -189,3 +189,6 @@ See release notes
 v62
 release notes fix
 
+v63
+Added try-catch on iter (cpp7-1) (not the panacea but helpfull if the passed object has innate throws)
+

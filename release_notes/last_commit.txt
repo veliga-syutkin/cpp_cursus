@@ -1,1 +1,1 @@
-release notes fix
+Added try-catch on iter (cpp7-1) (not the panacea but helpfull if the passed object has innate throws)
