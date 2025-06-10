@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:28:46 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/08 14:30:22 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/10 11:08:40 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main( void )
 	int a = 2;
 	int b = 3;
 
-	::swap( a, b );	// use `::` to call the global swap function instead of any potential local one
+	::swap<int>( a, b );	// use `::` to call the global swap function instead of any potential local one
 	std::cout << "a = " << a << ", b = " << b << std::endl;
 	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
 	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
@@ -45,7 +45,7 @@ int	main( void )
 	std::string c = "chaine1";
 	std::string d = "chaine2";
 
-	::swap(c, d);
+	::swap<std::string>(c, d);
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
@@ -56,7 +56,7 @@ int	main( void )
 		Teste a(2);
 		Teste b(4);
 
-		::swap(a, b);
+		::swap<Teste>(a, b);
 		std::cout << a << " " << b << std::endl;
 		std::cout << max(a, b) << std::endl;
 		std::cout << min(a, b) << std::endl;

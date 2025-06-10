@@ -6,13 +6,14 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:31:17 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/07 18:38:42 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/10 10:51:37 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once // replace #ifndef/#define/#endif with #pragma once
 
 #include <cstdlib> // for size_t
+#include "../terminal_colors.hpp"
 
 template <typename T>
 void iter(T *array, size_t length, void (*func)(T &))

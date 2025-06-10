@@ -180,3 +180,6 @@ Makefile for cpp8
 v59
 Added cpp8 to automation script of cpp_cursus
 
+v61
+See release notes
+

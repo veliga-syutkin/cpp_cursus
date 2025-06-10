@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 14:41:09 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/08 14:41:11 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/06/10 10:18:16 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ class Array
 
 	public:
 		Array();                                	// Default constructor
-		Array(const Array &other);         	// Copy constructor
-		Array &operator=(const Array &other); // Assignment operator
+		Array(const Array &other);         			// Copy constructor
+		Array &operator=(const Array &other); 		// Assignment operator
 		~Array();                                	// Destructor
 
 		Array(unsigned int n);

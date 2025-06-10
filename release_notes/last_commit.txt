@@ -1,1 +1,1 @@
-Added cpp8 to automation script of cpp_cursus
+See release notes
