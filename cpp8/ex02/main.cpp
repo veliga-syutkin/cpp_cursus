@@ -6,11 +6,12 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 09:49:16 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/10 10:03:59 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:49:15 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
+#include <cstdlib> 
 
 int main()
 {
@@ -43,8 +44,8 @@ int main()
 	{
 		#define MutantStack std::list
 		#define push push_back
-		#define top front
-		#define pop pop_front
+		#define top back				// keep LIFO logic
+		#define pop pop_back			// keep LIFO logic
 		
 		MutantStack<int> mstack;
 		std::list<int> lst;
@@ -70,6 +71,24 @@ int main()
 			++it;
 		}
 		// std::stack<int> s(mstack);
+	}
+	std::cout << TERMINAL_CYAN << "Test inspired from the internet:" << TERMINAL_RESET << std::endl;
+	{
+		MutantStack<int> stack;
+
+		//rng init
+		srand(time(NULL));
+
+		for (int cursor = 0; cursor < (rand() % 100) * 10; ++cursor) {
+			stack.push(rand() % 10000);
+		}
+
+		for (MutantStack<int>::iterator cursor = stack.begin(); cursor != stack.end(); cursor++) {
+			std::cout << *cursor;
+			if (cursor != stack.end())
+				std::cout << " ";
+		}
+		std::cout << std::endl;
 	}
 	return 0;
 }

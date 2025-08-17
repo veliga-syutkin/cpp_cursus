@@ -1,1 +1,1 @@
-Fixed catches in iter (cpp7-1), now one catches std::exception, the other catches any exception
+Polished cpp8, ready to defend it!(?)

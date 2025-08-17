@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:55:26 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/06/09 13:33:21 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/08/17 08:06:32 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Span
 		unsigned int		_maxSize;				// Maximum size of the set
 		unsigned int		_currentSize; 			// Current size of the set (not innate to multiset)
 
-		void				_checkSpanable() const;		// Check if the set is full
+		void				_checkSpanable() const;		// Check if the set has enough elements to operate
 
 	protected:										// Protected members for inheritance
 
