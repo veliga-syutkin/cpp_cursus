@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 22:59:09 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/08/19 00:13:34 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:17:45 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <string>
 #include <sstream>
 #include <stack>
+#include <stdexcept>
+
+#include "../terminal_colors.hpp"
 
 #define uint64_t unsigned long long
 
@@ -22,82 +25,97 @@
  * @param expr The expression to check.
  * @return True if the expression is valid, false otherwise.
  */
-bool isValidExpression(std::string &expr)
+bool isValidExpression(const std::string &expr)
 {
-	uint64_t cursor = 0;
-	for (std::string::iterator it = expr.begin(); it != expr.end(); ++it)
+	uint64_t numCount = 0;
+	uint64_t opCount = 0;
+	for (std::string::const_iterator it = expr.begin(); it != expr.end(); ++it)
 	{
 		if (std::isspace(*it))
-			continue;
-		if ((cursor == 0 || cursor == 1))
-			{if (!std::isdigit(*it))
-				return false;}
-		else if (cursor % 2 == 0 && *it != '+' && *it != '-' && *it != '*' && *it != '/')
-			return false;
-		else if (cursor % 2 == 1 && !std::isdigit(*it))
-			return false;
-		cursor++;
+			{continue;}
+		if (std::isdigit(*it))
+			{numCount++; continue;}
+		if (*it == '+' || *it == '-' || *it == '*' || *it == '/')
+			{opCount++; continue;}
 	}
+	if (numCount == 0 || opCount == 0)
+		return false;
+	if (numCount != opCount + 1) // there should be one more number than operators
+		return false;
 	return true;
 }
 
-int	calculus_RPN(std::stack<int> &rpm)
+/**
+ * @brief Performs the calculation based on the top two operands and the operator.
+ */
+void	calculus_RPN(std::stack<int> &rpm)
 {
 	int	a;
 	int b;
 	int result;
 
-	while (rpm.size() > 1)
+	if (rpm.size() < 3)
+		return ;
+	char op = rpm.top();
+	rpm.pop();			// remove operator;
+	b = rpm.top();
+	rpm.pop();			// remove first operand;
+	a = rpm.top();
+	rpm.pop();			// remove second operand;
+	switch (op)			// do the calculus
 	{
-		a = rpm.top() - '0'; // Convert char to int
-		rpm.pop();
-		b = rpm.top() - '0'; // Convert char to int
-		rpm.pop();
-		switch (rpm.top())
-		{
-			case '+':
-				result = a + b;
-				break;
-			case '-':
-				result = a - b;
-				break;
-			case '*':
-				result = a * b;
-				break;
-			case '/':
-				result = a / b;
-				break;
-		}
-		rpm.pop();
-		rpm.push(result + '0'); // Convert int back to char to calculate the next operation
+		case '+':
+			result = a + b;
+			break;
+		case '-':
+			result = a - b;
+			break;
+		case '*':
+			result = a * b;
+			break;
+		case '/':
+			if (b == 0) {
+				throw std::runtime_error("Error: Division by zero.");}
+			result = a / b;
+			break;
 	}
-	return rpm.top() - '0'; // Convert char back to int and return it
+	rpm.push(result);	// push the result back onto the stack
 }
 
 int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Usage: " << argv[0] << " \"expression\"" << std::endl;
+		std::cerr << TERMINAL_RED << "Usage: " << argv[0] << " \"expression\"" << std::endl;
 		return 1;
 	}
 	std::string expr = argv[1];
 	if (!isValidExpression(expr))
 	{
-		std::cerr << "Invalid expression. \n\
+		std::cerr << TERMINAL_RED << "Invalid expression. \n\
 		Please make sure it only contains single-digit numbers and operators (+, -, *, /)." << std::endl;
 		return 1;
 	}
 
 	std::stack<int> rpn;
 
-	for (std::string::reverse_iterator it = expr.rbegin(); it != expr.rend(); ++it)
-	{
-		if (*it != ' ')
-		{	rpn.push(*it);
-			// std::cout << "[DEBUG] Pushing: " << *it << std::endl; // Debug output
-	}}
-	
-	std::cout << "Result: " << calculus_RPN(rpn) << std::endl;
+	try {
+		for (std::string::iterator it = expr.begin(); it != expr.end(); ++it)
+		{
+			if (std::isspace(*it))
+				continue ;
+			if (isdigit(*it))
+				{rpn.push(*it - '0'); continue ;}
+			if (!isdigit(*it))
+				{rpn.push(*it); calculus_RPN(rpn);}
+		}
+	}
+	catch (const std::exception &e)	{
+		std::cerr << TERMINAL_RED << e.what() << std::endl; return 1;}
+
+	if (rpn.size() == 1)
+		std::cout << "Result: " << rpn.top() << std::endl;
+	else
+		std::cerr << TERMINAL_RED << "Error: Invalid RPN expression." << std::endl;
 	return (0);
 }

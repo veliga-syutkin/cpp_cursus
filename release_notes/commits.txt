@@ -207,3 +207,6 @@ started cpp9
 v68
 Cleaned up blank makefile.
 
+v69
+Finished ex01 of cpp9
+
