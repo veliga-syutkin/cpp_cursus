@@ -213,3 +213,6 @@ Finished ex01 of cpp9
 v70
 Started cpp9-2 (parser).
 
+v71
+finished cpp9-00
+
