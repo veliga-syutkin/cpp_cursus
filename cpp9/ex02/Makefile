@@ -6,7 +6,7 @@
 #    By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 09:52:01 by vsyutkin          #+#    #+#              #
-#    Updated: 2025/08/19 18:15:02 by vsyutkin         ###   ########.fr        #
+#    Updated: 2025/08/23 13:27:17 by vsyutkin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,10 @@ re: fclean all
 
 # **************************************************************************** #
 
+run:
+	./$(NAME) `shuf -i 1-100000 -n 3000 | tr "\n" " "`
+
 valgrind:
-	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 
 .PHONY: all clean fclean re
