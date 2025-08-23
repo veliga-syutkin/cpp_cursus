@@ -6,7 +6,7 @@
 /*   By: vsyutkin <vsyutkin@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:57:31 by vsyutkin          #+#    #+#             */
-/*   Updated: 2025/08/23 13:37:39 by vsyutkin         ###   ########.fr       */
+/*   Updated: 2025/08/23 14:51:10 by vsyutkin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@
 
 #include "../terminal_colors.hpp"
 
+/**
+ * @brief Sorts a vector of unsigned integers using a variation of the Ford-Johnson (Merge-Insertion) algorithm.
+ *
+ * This function sorts the input vector in ascending order. It works by:
+ * 1. Pairing adjacent elements and swapping them if necessary so that the larger element is second.
+ * 2. Inserting the second element of each pair into a new sorted container using binary insertion.
+ * 3. Merging the remaining elements (the first of each pair and any leftover) into the sorted container.
+ * 4. Assigning the sorted container back to the input vector.
+ *
+ * @param vec Reference to a std::vector<unsigned int> to be sorted in-place.
+ */
 void	fordJhonsonVec(std::vector<unsigned int> &vec)
 {
 	std::vector<unsigned int>::iterator cursor;
@@ -77,6 +88,18 @@ void	fordJhonsonVec(std::vector<unsigned int> &vec)
 	vec = sorted;
 }
 
+/**
+ * @brief Safely converts a C-string to an unsigned int.
+ *
+ * Attempts to parse the given C-string as an unsigned integer. If the string
+ * represents a valid unsigned integer within the range of unsigned int, the
+ * result is stored in the provided reference and the function returns true.
+ * Otherwise, the function returns false and the result is not modified.
+ *
+ * @param str     The C-string to convert.
+ * @param result  Reference to an unsigned int where the result will be stored on success.
+ * @return true if the conversion was successful and within range, false otherwise.
+ */
 bool safeStrToUInt(const char *str, unsigned int &result)
 {
     char *endptr = NULL;
@@ -90,6 +113,18 @@ bool safeStrToUInt(const char *str, unsigned int &result)
     return true;
 }
 
+/**
+ * @brief Sorts a std::deque<unsigned int> using a variation of the Ford-Johnson (Merge-Insertion) algorithm.
+ *
+ * This function sorts the input deque in ascending order. The algorithm works by:
+ * 1. Pairing adjacent elements and swapping them if necessary so that the larger element is second.
+ * 2. Inserting the second element of each pair into a new sorted container, maintaining sorted order.
+ * 3. Merging the remaining (first) elements of each pair into the sorted container.
+ * 
+ * The result is that the input deque is sorted in-place.
+ *
+ * @param deq Reference to the std::deque<unsigned int> to be sorted.
+ */
 void	fordJhonsonDeque(std::deque<unsigned int> &deq)
 {
 	std::deque<unsigned int>::iterator cursor;
@@ -145,6 +180,22 @@ void	fordJhonsonDeque(std::deque<unsigned int> &deq)
 	deq = sorted;
 }
 
+/**
+ * @brief Entry point of the program. Parses command-line arguments, validates them as unsigned integers,
+ *        and stores them in both a std::vector and a std::deque. Then, it prints the input sequence,
+ *        sorts both containers using the Ford-Johnson algorithm (implemented in forJhonsonVec and forJhonsonDeque),
+ *        and measures the time taken for each sort. Finally, it prints the sorted sequence and timing results.
+ *
+ * @param argc Number of command-line arguments.
+ * @param argv Array of command-line argument strings.
+ * @return int Returns 0 on success, or 1 if an invalid input is encountered.
+ *
+ * @note
+ * - Uses safeStrToUInt to safely convert input strings to unsigned integers.
+ * - Uses TERMINAL_* macros for colored terminal output.
+ * - Sorting is performed by forJhonsonVec (for std::vector) and forJhonsonDeque (for std::deque).
+ * - Timing is measured using std::clock().
+ */
 int main(int argc, char **argv)
 {
     std::vector<unsigned int> vec;
